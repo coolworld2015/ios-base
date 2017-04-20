@@ -2,17 +2,13 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput
 } from 'react-native';
 

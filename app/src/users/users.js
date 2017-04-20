@@ -1,24 +1,19 @@
-//'use strict';
+'use strict';
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput,
     Alert
 } from 'react-native';
 
 import UserDetails from './userDetails';
-//import Swipeout from 'react-native-swipeout';
 
 class Users extends Component {
     constructor(props) {

@@ -2,7 +2,6 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
@@ -11,8 +10,6 @@ import {
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput,
     Switch
 } from 'react-native';
@@ -91,7 +88,7 @@ class PhoneSearch extends Component {
                     </View>
 
                     <TextInput
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             searchQuery: text,
                             invalidValue: false
                         })}
@@ -128,7 +125,7 @@ class PhoneSearch extends Component {
     }
 
     onSearchPressed() {
-        if (this.state.searchQuery == undefined) {
+        if (this.state.searchQuery == undefined || this.state.searchQuery == '') {
             this.setState({
                 invalidValue: true
             });

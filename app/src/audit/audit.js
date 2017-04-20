@@ -2,25 +2,17 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
-    TextInput,
-    Alert
+    TextInput
 } from 'react-native';
 
-console.disableYellowBox = true;
-
 import AuditDetails from './auditDetails';
-//import AuditAdd from './auditAdd';
 
 class Audit extends Component {
     constructor(props) {
@@ -38,19 +30,20 @@ class Audit extends Component {
             positionY: 0
         };
 
-        this.getAudit();
+        this.getItems();
     }
 
-    getAudit() {
-        fetch('http://ui-base.herokuapp.com/api/audit/get', {
+    getItems() {
+        fetch(appConfig.url + 'api/audit/get', {
             method: 'get',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': appConfig.access_token
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
+            .then((response) => response.json())
+            .then((responseData) => {
 
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(responseData.slice(0, 25)),
@@ -59,12 +52,12 @@ class Audit extends Component {
                     filteredItems: responseData
                 });
             })
-            .catch((error)=> {
+            .catch((error) => {
                 this.setState({
                     serverError: true
                 });
             })
-            .finally(()=> {
+            .finally(() => {
                 this.setState({
                     showProgress: false
                 });
@@ -75,10 +68,6 @@ class Audit extends Component {
         this.props.navigator.push({
             title: rowData.date,
             component: AuditDetails,
-            //rightButtonTitle: 'Cancel',
-            //onRightButtonPress: () => {
-            //    this.props.navigator.pop()
-            //},
             passProps: {
                 pushEvent: rowData
             }
@@ -88,7 +77,7 @@ class Audit extends Component {
     renderRow(rowData) {
         return (
             <TouchableHighlight
-                onPress={()=> this.pressRow(rowData)}
+                onPress={() => this.pressRow(rowData)}
                 underlayColor='#ddd'
             >
                 <View style={{

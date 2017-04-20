@@ -41,7 +41,7 @@ class Login extends Component {
             body: JSON.stringify({
                 name: this.state.username,
                 pass: this.state.password,
-                description: 'Android'
+                description: 'IOS'
             }),
             headers: {
                 'Accept': 'application/json',

@@ -2,17 +2,13 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput
 } from 'react-native';
 
@@ -40,12 +36,20 @@ class PhoneSearchResults extends Component {
     }
 
     findByPhone() {
-        fetch('http://ui-base.herokuapp.com/api/items/findByPhone/'
-            + this.state.searchQueryHttp, {
+        let webUrl;
+        if (this.state.searchType == 'Search by phone') {
+            webUrl = 'api/items/findByPhone/'
+        } else {
+            //webUrl = 'api/items/findByName/'
+            webUrl = 'api/items/findByPhone/'
+        }
+
+        fetch(appConfig.url + webUrl + this.state.searchQueryHttp, {
             method: 'get',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': appConfig.access_token
             }
         })
             .then((response)=> response.json())
