@@ -3,14 +3,8 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    Text,
-    View,
-    TouchableHighlight,
-    ListView,
-    ScrollView,
     TabBarIOS,
     NavigatorIOS,
-    TextInput
 } from 'react-native';
 
 import Phones from '../phones/phones';
@@ -26,7 +20,6 @@ class AppContainer extends Component {
         this.state = {
             selectedTab: 'Phones'
         };
-
     }
 
     onLogOut() {
