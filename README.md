@@ -1,37 +1,11 @@
-# RN Base
-git clone https://github.com/coolworld2015/rn-base.git
+# IOS Base
+git clone https://github.com/coolworld2015/ios-base.git
 -------------------------------------------------------------------------------------------------
 git config --global user.name "coolworld2015"
 -------------------------------------------------------------------------------------------------
 git config --global user.email "wintermute2015@ukr.net"
 -------------------------------------------------------------------------------------------------
 npm install -g react-native-cli
--------------------------------------------------------------------------------------------------
-npm install (for rn-base.git)
--------------------------------------------------------------------------------------------------
-react-native init AwesomeProject
--------------------------------------------------------------------------------------------------
-cd AwesomeProject
--------------------------------------------------------------------------------------------------
-rn-base\android -> local.properties -> sdk.dir = C:/Users/ed/AppData/Local/Android/sdk
--------------------------------------------------------------------------------------------------
-Android SDK Manager -> Android SDK Build-tools (23.0.1)
--------------------------------------------------------------------------------------------------
-ANDROID_HOME -> C:/Users/ed/AppData/Local/Android/sdk
--------------------------------------------------------------------------------------------------
-MAX_WAIT_TIME = 360000 -> node_modules\react-native\packager\react-packager\src\node-haste\FileWatcher
--------------------------------------------------------------------------------------------------
-Genymotion -> Ctrl+M -> Menu
--------------------------------------------------------------------------------------------------
-react-native run-android
--------------------------------------------------------------------------------------------------
-APK -> react-native bundle --dev false --platform android --entry-file index.android.js --bundle-output ./android/app/build/intermediates/assets/debug/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug
--------------------------------------------------------------------------------------------------
-APK -> cd android -> gradlew assembleDebug(assembleRelease) -> \android\app\build\outputs\apk
--------------------------------------------------------------------------------------------------
-PIC -> /android/app/src/main/res/mipmap
--------------------------------------------------------------------------------------------------
-CONFIG -> android/app ->build.gradle
 -------------------------------------------------------------------------------------------------
 react-native start
 -------------------------------------------------------------------------------------------------
@@ -56,3 +30,6 @@ d) Pop-up will appear, tap "Trust" there.
 6) That's it. Move back to springboard and run the app.
 Installed.
 -------------------------------------------------------------------------------------------------
+xCode 8 update
+-------------------------------------------------------------------------------------------------
+RCTWebSocet -> Apple LLVM 8.0 Custom... -> other warning flags
