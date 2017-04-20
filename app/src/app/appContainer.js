@@ -42,7 +42,7 @@ class AppContainer extends Component {
                 <TabBarIOS.Item
                     title="Phones"
                     //systemIcon="favorites"
-                    icon={require('../../../phones.png')}
+                    icon={require('../../phones.png')}
                     selected={this.state.selectedTab == 'Phones'}
                     onPress={()=> this.setState({selectedTab: 'Phones'})}>
 
@@ -68,7 +68,7 @@ class AppContainer extends Component {
                <TabBarIOS.Item
                     title="Users"
                     //systemIcon="contacts"
-                    icon={require('../../../users.png')}
+                    icon={require('../../users.png')}
                     selected={this.state.selectedTab == 'Users'}
                     onPress={()=> this.setState({selectedTab: 'Users'})}>
 
@@ -94,7 +94,7 @@ class AppContainer extends Component {
                 <TabBarIOS.Item
                     title="Audit"
                     //systemIcon="history"
-                    icon={require('../../../clock.png')}
+                    icon={require('../../clock.png')}
                     selected={this.state.selectedTab == 'Audit'}
                     onPress={()=> this.setState({selectedTab: 'Audit'})}>
 
@@ -124,7 +124,7 @@ class AppContainer extends Component {
                 <TabBarIOS.Item
                     title="Logout"
                     //systemIcon="more"
-                    icon={require('../../../log-out.png')}
+                    icon={require('../../log-out.png')}
                     selected={this.state.selectedTab == 'Logout'}
                     onPress={this.onLogOut.bind(this)}>
                 </TabBarIOS.Item>

@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
+
     StyleSheet,
     Text,
     View,
@@ -15,10 +15,10 @@ import {
     TextInput
 } from 'react-native';
 
-console.disableYellowBox = true;
-
 import Login from './login';
 import AppContainer from './appContainer';
+
+console.disableYellowBox = true;
 
 class App extends Component {
     constructor(props) {
