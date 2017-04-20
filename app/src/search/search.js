@@ -14,9 +14,9 @@ import {
     Switch
 } from 'react-native';
 
-import PhoneSearchResults from './phoneSearchResults';
+import searchResults from './searchResults';
 
-class PhoneSearch extends Component {
+class Search extends Component {
     constructor(props) {
         super(props);
 
@@ -60,7 +60,8 @@ class PhoneSearch extends Component {
                         borderColor: '#48BBEC',
                         alignSelf: 'stretch',
                         flex: 1,
-                        flexDirection: 'row'
+                        flexDirection: 'row',
+                        borderRadius: 5
                     }}>
                         <View
                             style={{
@@ -68,7 +69,7 @@ class PhoneSearch extends Component {
                                 flex: 1
                             }}>
                             <Text style={{
-                                fontSize: 18,
+                                fontSize: 18
                             }}>
                                 Search by number
                             </Text>
@@ -125,7 +126,8 @@ class PhoneSearch extends Component {
     }
 
     onSearchPressed() {
-        if (this.state.searchQuery == undefined || this.state.searchQuery == '') {
+        if (this.state.searchQuery == undefined ||
+            this.state.searchQuery == '') {
             this.setState({
                 invalidValue: true
             });
@@ -133,12 +135,8 @@ class PhoneSearch extends Component {
         }
 
         this.props.navigator.push({
-            component: PhoneSearchResults,
+            component: searchResults,
             title: this.state.searchQuery,
-            //rightButtonTitle: 'Back',
-            //onRightButtonPress: () => {
-            //    this.props.navigator.popToTop()
-            //},
             passProps: {
                 searchQuery: this.state.searchQuery
             }
@@ -198,7 +196,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         borderWidth: 1,
         borderColor: '#48BBEC',
-        borderRadius: 0,
+        borderRadius: 5,
         color: 'black'
     },
     button: {
@@ -225,4 +223,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PhoneSearch;
+export default Search;

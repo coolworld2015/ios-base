@@ -12,7 +12,7 @@ import {
     TextInput
 } from 'react-native';
 
-import PhoneDetails from './phoneDetails';
+import PhoneDetails from '../phones/phoneDetails';
 
 class PhoneSearchResults extends Component {
     constructor(props) {
@@ -114,7 +114,7 @@ class PhoneSearchResults extends Component {
                     borderBottomWidth: 1,
                     backgroundColor: '#fff'
                 }}>
-                    <Text style={{backgroundColor: '#fff'}}>
+                    <Text style={{backgroundColor: '#fff', fontWeight: 'bold'}}>
                         {rowData.name} - {rowData.phone}
                     </Text>
                 </View>
@@ -208,16 +208,15 @@ class PhoneSearchResults extends Component {
                         borderWidth: 3,
                         borderColor: 'lightgray',
                         borderRadius: 0,
+                        fontWeight: 'bold'
                     }}
-                               onChangeText={this.onChangeText.bind(this)}
-                               value={this.state.searchQuery}
-                               placeholder="Search">
+                        onChangeText={this.onChangeText.bind(this)}
+                        value={this.state.searchQuery}
+                        placeholder="Search">
                     </TextInput>
-
-                    {errorCtrl}
-
                 </View>
 
+                {errorCtrl}
                 {loader}
 
                 <ScrollView
@@ -231,10 +230,9 @@ class PhoneSearchResults extends Component {
 
                 <View style={{marginBottom: 49}}>
                     <Text style={styles.countFooter}>
-                        {this.state.resultsCount} entries were found.
+                        Records: {this.state.resultsCount}
                     </Text>
                 </View>
-
             </View>
         );
     }
@@ -258,7 +256,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         padding: 10,
         borderColor: '#D7D7D7',
-        backgroundColor: 'whitesmoke'
+        backgroundColor: 'whitesmoke',
+        fontWeight: 'bold'
     },
     countHeader1: {
         fontSize: 16,
