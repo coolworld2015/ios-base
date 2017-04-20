@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import Phones from '../phones/phones';
-import PhoneSearch from '../phones/phoneSearch';
+import Search from '../search/search';
 import Audit from '../audit/audit';
 import Users from '../users/users';
 import UserAdd from '../users/userAdd';
@@ -32,7 +32,7 @@ class AppContainer extends Component {
 
                 <TabBarIOS.Item
                     title="Phones"
-                    icon={require('../../phones.png')}
+                    icon={require('../../img/phones.png')}
                     selected={this.state.selectedTab == 'Phones'}
                     onPress={() => this.setState({selectedTab: 'Phones'})}>
 
@@ -48,7 +48,7 @@ class AppContainer extends Component {
                             onRightButtonPress: () => {
                                 this.refs.phones.navigator.push({
                                     title: "Search",
-                                    component: PhoneSearch
+                                    component: Search
                                 });
                             }
                         }}
@@ -57,7 +57,7 @@ class AppContainer extends Component {
 
                 <TabBarIOS.Item
                     title="Users"
-                    icon={require('../../users.png')}
+                    icon={require('../../img/users.png')}
                     selected={this.state.selectedTab == 'Users'}
                     onPress={() => this.setState({selectedTab: 'Users'})}>
 
@@ -82,7 +82,7 @@ class AppContainer extends Component {
 
                 <TabBarIOS.Item
                     title="Audit"
-                    icon={require('../../clock.png')}
+                    icon={require('../../img/clock.png')}
                     selected={this.state.selectedTab == 'Audit'}
                     onPress={() => this.setState({selectedTab: 'Audit'})}>
 
@@ -100,7 +100,7 @@ class AppContainer extends Component {
 
                 <TabBarIOS.Item
                     title="Logout"
-                    icon={require('../../log-out.png')}
+                    icon={require('../../img/log-out.png')}
                     selected={this.state.selectedTab == 'Logout'}
                     onPress={this.onLogOut.bind(this)}>
                 </TabBarIOS.Item>

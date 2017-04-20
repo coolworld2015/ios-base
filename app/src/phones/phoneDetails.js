@@ -35,7 +35,6 @@ class PhoneDetails extends Component {
         return (
             <View style={styles.container}>
 
-
                 <ScrollView>
                     <View style={styles.form}>
                         <View style={styles.itemBlock}>
@@ -114,8 +113,6 @@ class PhoneDetails extends Component {
                                 </Text>
                             </View>
                         </View>
-
-
 
                         <TouchableHighlight
                             onPress={()=> this.goBack()}

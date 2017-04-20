@@ -112,7 +112,7 @@ class Audit extends Component {
             });
 
             setTimeout(() => {
-                this.getAudit()
+                this.getItems();
             }, 300);
         }
 
