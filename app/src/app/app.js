@@ -1,19 +1,6 @@
-//'use strict';
+'use strict';
 
 import React, {Component} from 'react';
-import {
-
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    TouchableHighlight,
-    ListView,
-    ScrollView,
-    TabBarIOS,
-    NavigatorIOS,
-    TextInput
-} from 'react-native';
 
 import Login from './login';
 import AppContainer from './appContainer';
@@ -25,8 +12,6 @@ class App extends Component {
         super(props);
 
         this.state = {
-            checkingAuth: false,
-            showProgress: false,
             isLoggedIn: false
         };
 
@@ -53,25 +38,11 @@ class App extends Component {
                 refresh: true,
                 items: [],
                 item: {}
-            },
-            socket: {
-                name: ''
             }
         };
     }
 
     render() {
-        if (this.state.checkingAuth) {
-            return (
-                <View style={styles.container}>
-                    <ActivityIndicatorIOS
-                        animating={true}
-                        size="large"
-                        style={styles.loader}/>
-                </View>
-            )
-        }
-
         if (this.state.isLoggedIn) {
             return (
                 <AppContainer onLogOut={this.onLogOut.bind(this)}/>

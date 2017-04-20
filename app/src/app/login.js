@@ -2,17 +2,13 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Image,
     TouchableHighlight,
-    ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput
 } from 'react-native';
 
@@ -52,8 +48,8 @@ class Login extends Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
+            .then((response) => response.json())
+            .then((responseData) => {
                 if (responseData.token) {
                     appConfig.access_token = responseData.token;
                     this.setState({
@@ -69,7 +65,7 @@ class Login extends Component {
                     });
                 }
             })
-            .catch((error)=> {
+            .catch((error) => {
                 this.setState({
                     badCredentials: true,
                     showProgress: false
@@ -78,17 +74,11 @@ class Login extends Component {
     }
 
     render() {
-        var errorCtrl = <View />;
+        let errorCtrl = <View />;
 
         if (!this.state.success && this.state.badCredentials) {
             errorCtrl = <Text style={styles.error}>
                 That username and password combination did not work
-            </Text>;
-        }
-
-        if (!this.state.success && this.state.unknownError) {
-            errorCtrl = <Text style={styles.error}>
-                We experienced an unexpected issue
             </Text>;
         }
 
@@ -101,7 +91,7 @@ class Login extends Component {
                     <Text style={styles.heading}>RN-Base</Text>
                     <TextInput
                         ref="username"
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             username: text,
                             badCredentials: false
                         })}
@@ -111,7 +101,7 @@ class Login extends Component {
                     </TextInput>
 
                     <TextInput
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             password: text,
                             badCredentials: false
                         })}
@@ -123,7 +113,7 @@ class Login extends Component {
 
                     <TouchableHighlight
                         //onPress={this.onLoginPressed.bind(this)}
-                        onPress={()=> this.onLogin()}
+                        onPress={() => this.onLogin()}
                         style={styles.button}>
                         <Text style={styles.buttonText}>Log in</Text>
                     </TouchableHighlight>

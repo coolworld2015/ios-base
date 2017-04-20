@@ -1,12 +1,10 @@
-//'use strict';
+'use strict';
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
     ListView,
     ScrollView,
@@ -41,10 +39,9 @@ class AppContainer extends Component {
 
                 <TabBarIOS.Item
                     title="Phones"
-                    //systemIcon="favorites"
                     icon={require('../../phones.png')}
                     selected={this.state.selectedTab == 'Phones'}
-                    onPress={()=> this.setState({selectedTab: 'Phones'})}>
+                    onPress={() => this.setState({selectedTab: 'Phones'})}>
 
                     <NavigatorIOS
                         style={{
@@ -65,12 +62,11 @@ class AppContainer extends Component {
                     />
                 </TabBarIOS.Item>
 
-               <TabBarIOS.Item
+                <TabBarIOS.Item
                     title="Users"
-                    //systemIcon="contacts"
                     icon={require('../../users.png')}
                     selected={this.state.selectedTab == 'Users'}
-                    onPress={()=> this.setState({selectedTab: 'Users'})}>
+                    onPress={() => this.setState({selectedTab: 'Users'})}>
 
                     <NavigatorIOS
                         style={{
@@ -93,10 +89,9 @@ class AppContainer extends Component {
 
                 <TabBarIOS.Item
                     title="Audit"
-                    //systemIcon="history"
                     icon={require('../../clock.png')}
                     selected={this.state.selectedTab == 'Audit'}
-                    onPress={()=> this.setState({selectedTab: 'Audit'})}>
+                    onPress={() => this.setState({selectedTab: 'Audit'})}>
 
                     <NavigatorIOS
                         style={{
@@ -106,24 +101,12 @@ class AppContainer extends Component {
                         initialRoute={{
                             component: Audit,
                             title: 'Audit',
-/*                          rightButtonTitle: 'Test',
-                            onRightButtonPress: () => {
-                                this.refs.audit.navigator.push({
-                                    title: "Test",
-                                    component: AuditAdd,
-                                    rightButtonTitle: 'Back',
-                                    onRightButtonPress: () => {
-                                        this.refs.audit.navigator.popToTop();
-                                    }
-                                });
-                            }*/
                         }}
                     />
                 </TabBarIOS.Item>
 
                 <TabBarIOS.Item
                     title="Logout"
-                    //systemIcon="more"
                     icon={require('../../log-out.png')}
                     selected={this.state.selectedTab == 'Logout'}
                     onPress={this.onLogOut.bind(this)}>
@@ -133,22 +116,6 @@ class AppContainer extends Component {
         );
     }
 }
-
-/*
- systemIcon List:
- bookmarks
- contacts
- downloads
- favorites
- featured
- history
- more
- "most-recent"
- "most-viewed"
- recents
- search
- "top-rated"
- */
 
 const styles = StyleSheet.create({
     AppContainer: {
