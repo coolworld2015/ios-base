@@ -130,7 +130,7 @@ class Users extends Component {
 
     pressRow(rowData) {
         this.props.navigator.push({
-            title: 'Edit',
+            title: rowData.name,
             component: UserDetails,
             rightButtonTitle: 'Delete',
             onRightButtonPress: () => {

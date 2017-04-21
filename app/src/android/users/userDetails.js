@@ -27,7 +27,7 @@ class UserDetails extends Component {
 		
 		this.state = {
 			serverError: false
-		}	
+		};
 		
 		if (props.data) {
 			this.state = {

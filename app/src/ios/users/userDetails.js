@@ -96,28 +96,14 @@ class UserDetails extends Component {
                     justifyContent: 'flex-start'
                 }}>
 
-                    <Text style={{
-                        fontSize: 24,
-                        textAlign: 'center',
-                        marginTop: 10,
-                        fontWeight: 'bold'
-                    }}>
-                        {this.state.name}
-                    </Text>
-
                     <TextInput
                         onChangeText={(text)=> this.setState({
                             name: text,
                             invalidValue: false
                         })}
-                        style={styles.loginInput}
+                        style={styles.formInputBold}
                         value={this.state.name}
                         placeholder="Name">
-                    </TextInput>
-
-                    <TextInput
-                        style={styles.loginInput}
-                        value={this.state.id}>
                     </TextInput>
 
                     <TextInput
@@ -131,11 +117,12 @@ class UserDetails extends Component {
                     </TextInput>
 
                     <TextInput
+                        multiline={true}
                         onChangeText={(text)=> this.setState({
                             description: text,
                             invalidValue: false
                         })}
-                        style={styles.loginInput}
+                        style={styles.formInputArea}
                         value={this.state.description}
                         placeholder="Description">
                     </TextInput>
@@ -162,11 +149,16 @@ class UserDetails extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
+    formInputBold: {
+        height: 50,
+        marginTop: 10,
+        padding: 4,
+        fontSize: 18,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 5,
+        color: 'black',
+        fontWeight: 'bold'
     },
     countHeader: {
         fontSize: 16,
@@ -188,6 +180,16 @@ const styles = StyleSheet.create({
     },
     loginInput: {
         height: 50,
+        marginTop: 10,
+        padding: 4,
+        fontSize: 18,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 5,
+        color: 'black'
+    },
+    formInputArea: {
+        height: 100,
         marginTop: 10,
         padding: 4,
         fontSize: 18,

@@ -72,7 +72,7 @@ class AppContainer extends Component {
                             rightButtonTitle: 'New',
                             onRightButtonPress: () => {
                                 this.refs.users.navigator.push({
-                                    title: "New user",
+                                    title: "New record",
                                     component: UserAdd
                                 });
                             }

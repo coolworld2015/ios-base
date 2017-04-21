@@ -99,15 +99,6 @@ class UserAdd extends Component {
                     justifyContent: 'flex-start'
                 }}>
 
-                    <Text style={{
-                        fontSize: 24,
-                        textAlign: 'center',
-                        marginTop: 0,
-                        fontWeight: "bold"
-                    }}>
-                        New
-                    </Text>
-
                     <TextInput
                         onChangeText={(text)=> this.setState({
                             name: text,
@@ -129,11 +120,12 @@ class UserAdd extends Component {
                     </TextInput>
 
                     <TextInput
+                        multiline={true}
                         onChangeText={(text)=> this.setState({
                             description: text,
                             invalidValue: false
                         })}
-                        style={styles.loginInput}
+                        style={styles.formInputArea}
                         value={this.state.description}
                         placeholder="Description">
                     </TextInput>
@@ -160,11 +152,15 @@ class UserAdd extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
+    formInputArea: {
+        height: 100,
+        marginTop: 10,
+        padding: 4,
+        fontSize: 18,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 5,
+        color: 'black'
     },
     countHeader: {
         fontSize: 16,
