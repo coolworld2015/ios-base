@@ -110,7 +110,7 @@ class Login extends Component {
                     />
 					<View style={styles.headerContainer}>
 						<Text style={styles.heading}>
-							RN-Base
+							Base
 						</Text>
 					</View>
                     <TextInput
