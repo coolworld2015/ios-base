@@ -34,7 +34,7 @@ class SearchResults extends Component {
 		
 		this.state = {
 			dataSource: ds.cloneWithRows([])
-		}	
+		};
 		
 		if (props.data) {
 			this.state = {
