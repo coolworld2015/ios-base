@@ -49,7 +49,7 @@ class Phones extends Component {
             .then((responseData)=> {
 
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(responseData.slice(0, 25)),
+                    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 25)),
                     resultsCount: responseData.length,
                     responseData: responseData,
                     filteredItems: responseData
@@ -78,14 +78,10 @@ class Phones extends Component {
         return 0;
     }
 
-    pressRow(rowData) {
+    showDetails(rowData) {
         this.props.navigator.push({
             title: rowData.name,
             component: PhoneDetails,
-            // rightButtonTitle: 'Cancel',
-            // onRightButtonPress: () => {
-            //     this.props.navigator.pop()
-            // },
             passProps: {
                 pushEvent: rowData
             }
@@ -95,7 +91,7 @@ class Phones extends Component {
     renderRow(rowData) {
         return (
             <TouchableHighlight
-                onPress={()=> this.pressRow(rowData)}
+                onPress={()=> this.showDetails(rowData)}
                 underlayColor='#ddd'
             >
                 <View style={{
