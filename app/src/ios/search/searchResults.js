@@ -150,7 +150,7 @@ class PhoneSearchResults extends Component {
         positionY = this.state.positionY;
         items = this.state.filteredItems.slice(0, recordsCount);
 
-        console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
+        //console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
             console.log(items.length);
@@ -207,12 +207,11 @@ class PhoneSearchResults extends Component {
                         backgroundColor: 'white',
                         borderWidth: 3,
                         borderColor: 'lightgray',
-                        borderRadius: 0,
-                        fontWeight: 'bold'
+                        borderRadius: 0
                     }}
                         onChangeText={this.onChangeText.bind(this)}
                         value={this.state.searchQuery}
-                        placeholder="Search">
+                        placeholder="Search here">
                     </TextInput>
                 </View>
 

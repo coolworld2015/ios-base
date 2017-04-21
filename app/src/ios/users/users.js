@@ -204,7 +204,7 @@ class Users extends Component {
         positionY = this.state.positionY;
         items = this.state.filteredItems.slice(0, recordsCount);
 
-        console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
+        //console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
             console.log(items.length);
@@ -266,7 +266,7 @@ class Users extends Component {
                     }}
                                onChangeText={this.onChangeText.bind(this)}
                                value={this.state.searchQuery}
-                               placeholder="Search">
+                               placeholder="Search here">
                     </TextInput>
 
                     {errorCtrl}

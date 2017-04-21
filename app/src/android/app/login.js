@@ -129,7 +129,8 @@ class Login extends Component {
 							borderColor: 'lightgray',
 							borderRadius: 5,
 							color: 'black',
-							backgroundColor: 'white'
+							backgroundColor: 'white',
+                            fontWeight: 'bold'
 						}} 
                         placeholder='Login'>1
                     </TextInput>
@@ -150,7 +151,8 @@ class Login extends Component {
 							borderColor: 'lightgray',
 							borderRadius: 5,
 							color: 'black',
-							backgroundColor: 'white'
+							backgroundColor: 'white',
+                            fontWeight: 'bold'
 						}} 
                         placeholder='Password' 
 						secureTextEntry={true}>1

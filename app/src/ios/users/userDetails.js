@@ -103,7 +103,7 @@ class UserDetails extends Component {
                         })}
                         style={styles.formInputBold}
                         value={this.state.name}
-                        placeholder="Name">
+                        placeholder="Login">
                     </TextInput>
 
                     <TextInput
@@ -210,7 +210,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fff',
-        fontSize: 24
+        fontSize: 24,
+        fontWeight: 'bold'
     },
     loader: {
         marginTop: 20

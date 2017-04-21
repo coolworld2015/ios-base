@@ -16,7 +16,7 @@ class AuditDetails extends Component {
     constructor(props) {
         super(props);
 
-        var ip = props.pushEvent.ip.split(':');
+        let ip = props.pushEvent.ip.split(':');
 
         this.state = {
             id: props.pushEvent.id,
@@ -41,6 +41,17 @@ class AuditDetails extends Component {
                     <View style={styles.form}>
                         <View style={styles.itemBlock}>
                             <Text style={styles.itemTextBold}>
+                                User:
+                            </Text>
+                            <View style={styles.itemWrap}>
+                                <Text style={styles.itemText}>
+                                    {this.state.name}
+                                </Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.itemBlock}>
+                            <Text style={styles.itemTextBold}>
                                 Date:
                             </Text>
                             <View style={styles.itemWrap}>
@@ -52,11 +63,11 @@ class AuditDetails extends Component {
 
                         <View style={styles.itemBlock}>
                             <Text style={styles.itemTextBold}>
-                                User:
+                                IP:
                             </Text>
                             <View style={styles.itemWrap}>
                                 <Text style={styles.itemText}>
-                                    {this.state.name}
+                                    {this.state.ip}
                                 </Text>
                             </View>
                         </View>
@@ -86,7 +97,7 @@ class AuditDetails extends Component {
 
 
                         <TouchableHighlight
-                            onPress={()=> this.goBack()}
+                            onPress={() => this.goBack()}
                             style={styles.button}>
                             <Text style={styles.buttonText}>
                                 Back
