@@ -136,19 +136,7 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 20,
-    },
     container: {
-        //backgroundColor: '#F5FCFF',
         paddingTop: 40,
         padding: 10,
         alignItems: 'center',
@@ -163,19 +151,9 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 30,
         marginTop: 10,
-        //marginBottom: 20,
         fontWeight: 'bold'
     },
-    loginInput1: {
-        height: 50,
-        marginTop: 10,
-        padding: 4,
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: '#48BBEC',
-        borderRadius: 0,
-        color: '#48BBEC'
-    },
+ 
     loginInput: {
         height: 50,
         marginTop: 10,

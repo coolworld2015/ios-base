@@ -34,7 +34,6 @@ class PhoneDetails extends Component {
     render() {
         return (
             <View style={styles.container}>
-
                 <ScrollView>
                     <View style={styles.form}>
                         <View style={styles.itemBlock}>
@@ -136,28 +135,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'white'
     },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#48BBEC',
-        borderWidth: 0,
-        borderColor: 'whitesmoke'
-    },
-    textSmall: {
-        fontSize: 16,
-        textAlign: 'center',
-        margin: 14,
-        fontWeight: 'bold',
-        color: 'white'
-    },
-    textLarge: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-        marginRight: 40,
-        fontWeight: 'bold',
-        color: 'white'
-    },
     form: {
         flex: 1,
         padding: 10,
@@ -201,14 +178,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold'
-    },
-    loader: {
-        marginTop: 20
-    },
-    error: {
-        color: 'red',
-        paddingTop: 10,
-        textAlign: 'center'
     }
 });
 

@@ -35,8 +35,6 @@ class AuditDetails extends Component {
     render() {
         return (
             <View style={styles.container}>
-
-
                 <ScrollView>
                     <View style={styles.form}>
                         <View style={styles.itemBlock}>
@@ -83,7 +81,6 @@ class AuditDetails extends Component {
                             </View>
                         </View>
 
-
                         <View style={styles.itemBlock}>
                             <Text style={styles.itemTextBold}>
                                 Description:
@@ -95,7 +92,6 @@ class AuditDetails extends Component {
                             </View>
                         </View>
 
-
                         <TouchableHighlight
                             onPress={() => this.goBack()}
                             style={styles.button}>
@@ -103,8 +99,6 @@ class AuditDetails extends Component {
                                 Back
                             </Text>
                         </TouchableHighlight>
-
-                        <Text>{this.state.bugANDROID}</Text>
                     </View>
                 </ScrollView>
             </View>
@@ -117,28 +111,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         backgroundColor: 'white'
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#48BBEC',
-        borderWidth: 0,
-        borderColor: 'whitesmoke'
-    },
-    textSmall: {
-        fontSize: 16,
-        textAlign: 'center',
-        margin: 14,
-        fontWeight: 'bold',
-        color: 'white'
-    },
-    textLarge: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-        marginRight: 40,
-        fontWeight: 'bold',
-        color: 'white'
     },
     form: {
         flex: 1,
@@ -183,14 +155,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold'
-    },
-    loader: {
-        marginTop: 20
-    },
-    error: {
-        color: 'red',
-        paddingTop: 10,
-        textAlign: 'center'
     }
 });
 

@@ -216,18 +216,6 @@ class Audit extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
-    },
-    countHeader: {
-        fontSize: 16,
-        textAlign: 'center',
-        padding: 15,
-        backgroundColor: '#F5FCFF',
-    },
     countFooter: {
         fontSize: 16,
         textAlign: 'center',
@@ -236,35 +224,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'whitesmoke',
         fontWeight: 'bold'
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 20,
-    },
-    loginInput: {
-        height: 50,
-        marginTop: 10,
-        padding: 4,
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'lightgray',
-        borderRadius: 0,
-        color: 'gray'
-    },
-    button: {
-        height: 50,
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
-        alignSelf: 'stretch',
-        marginTop: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 24
-    },
     loader: {
         marginTop: 20
     },
@@ -272,12 +231,6 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingTop: 10,
         textAlign: 'center'
-    },
-    img: {
-        height: 95,
-        width: 75,
-        borderRadius: 20,
-        margin: 20
     }
 });
 

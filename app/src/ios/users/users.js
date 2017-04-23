@@ -34,7 +34,6 @@ class Users extends Component {
 
     }
 
-
     componentDidMount() {
         this.getItems();
     }
@@ -232,7 +231,6 @@ class Users extends Component {
     }
 
     render() {
-
         var errorCtrl, loader;
 
         if (this.state.serverError) {
@@ -264,19 +262,17 @@ class Users extends Component {
                         borderColor: 'lightgray',
                         borderRadius: 0,
                     }}
-                               onChangeText={this.onChangeText.bind(this)}
-                               value={this.state.searchQuery}
-                               placeholder="Search here">
+						onChangeText={this.onChangeText.bind(this)}
+						value={this.state.searchQuery}
+						placeholder="Search here">
                     </TextInput>
-
-                    {errorCtrl}
-
                 </View>
-
+				
+				{errorCtrl}
+				
                 {loader}
 
-                <ScrollView
-                    onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
+                <ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
                     <ListView
                         style={{marginTop: -65, marginBottom: -45}}
                         dataSource={this.state.dataSource}
@@ -285,11 +281,9 @@ class Users extends Component {
                 </ScrollView>
 
                 <View style={{marginBottom: 49}}>
-
-                        <Text style={styles.countFooter}>
-                            Records: {this.state.resultsCount}
-                        </Text>
-
+					<Text style={styles.countFooter}>
+						Records: {this.state.resultsCount}
+					</Text>
                 </View>
             </View>
         )
@@ -297,18 +291,6 @@ class Users extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
-    },
-    countHeader: {
-        fontSize: 16,
-        textAlign: 'center',
-        padding: 15,
-        backgroundColor: '#F5FCFF',
-    },
     countFooter: {
         fontSize: 14,
         textAlign: 'center',
@@ -317,35 +299,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'whitesmoke',
         fontWeight: 'bold'
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 20,
-    },
-    loginInput: {
-        height: 50,
-        marginTop: 10,
-        padding: 4,
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'lightgray',
-        borderRadius: 0,
-        color: 'gray'
-    },
-    button: {
-        height: 50,
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
-        alignSelf: 'stretch',
-        marginTop: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 24
-    },
     loader: {
         marginTop: 20
     },
@@ -353,12 +306,6 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingTop: 10,
         textAlign: 'center'
-    },
-    img: {
-        height: 95,
-        width: 75,
-        borderRadius: 20,
-        margin: 20
     }
 });
 

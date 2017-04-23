@@ -38,8 +38,7 @@ class UserAdd extends Component {
         }
 
         this.setState({
-            showProgress: true,
-            bugANDROID: ' '
+            showProgress: true
         });
 
         fetch(appConfig.url + 'api/users/add', {
@@ -75,15 +74,13 @@ class UserAdd extends Component {
     }
 
     render() {
-        var errorCtrl = <View />;
+        var errorCtrl, validCtrl;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
                 Something went wrong.
             </Text>;
         }
-
-        var validCtrl = <View />;
 
         if (this.state.invalidValue) {
             validCtrl = <Text style={styles.error}>
@@ -162,24 +159,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         color: 'black'
     },
-    countHeader: {
-        fontSize: 16,
-        textAlign: 'center',
-        padding: 15,
-        backgroundColor: '#F5FCFF',
-    },
-    countFooter: {
-        fontSize: 16,
-        textAlign: 'center',
-        padding: 10,
-        borderColor: '#D7D7D7',
-        backgroundColor: 'whitesmoke'
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 20,
-    },
     loginInput: {
         height: 50,
         marginTop: 10,
@@ -212,12 +191,6 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingTop: 10,
         textAlign: 'center'
-    },
-    img: {
-        height: 95,
-        width: 75,
-        borderRadius: 20,
-        margin: 20
     }
 });
 
