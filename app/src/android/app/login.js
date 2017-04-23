@@ -88,7 +88,7 @@ class Login extends Component {
     }
 
     render() {
-        var errorCtrl = <View />;
+        let errorCtrl;
 
         if (!this.state.success && this.state.badCredentials) {
             errorCtrl = <Text style={styles.error}>

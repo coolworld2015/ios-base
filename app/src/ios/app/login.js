@@ -74,7 +74,7 @@ class Login extends Component {
     }
 
     render() {
-        let errorCtrl = <View />;
+        let errorCtrl;
 
         if (!this.state.success && this.state.badCredentials) {
             errorCtrl = <Text style={styles.error}>
@@ -115,7 +115,9 @@ class Login extends Component {
                         //onPress={this.onLoginPressed.bind(this)}
                         onPress={() => this.onLogin()}
                         style={styles.button}>
-                        <Text style={styles.buttonText}>Log in</Text>
+                        <Text style={styles.buttonText}>
+							Log in
+						</Text>
                     </TouchableHighlight>
 
                     {errorCtrl}
