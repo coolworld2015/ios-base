@@ -1,5 +1,5 @@
-# IOS Base
-git clone https://github.com/coolworld2015/ios-base.git
+# RN Base
+git clone https://github.com/coolworld2015/rn-base.git
 -------------------------------------------------------------------------------------------------
 git config --global user.name "coolworld2015"
 -------------------------------------------------------------------------------------------------
