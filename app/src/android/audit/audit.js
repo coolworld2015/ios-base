@@ -16,7 +16,7 @@ class Audit extends Component {
     constructor(props) {
         super(props);
 
-        var ds = new ListView.DataSource({
+        let ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 != r2
         });
 
@@ -96,9 +96,10 @@ class Audit extends Component {
             return;
         }
 
-        var recordsCount = this.state.recordsCount;
-        var positionY = this.state.positionY;
-        var items = this.state.filteredItems.slice(0, recordsCount);
+        let items, positionY, recordsCount;
+        recordsCount = this.state.recordsCount;
+        positionY = this.state.positionY;
+        items = this.state.filteredItems.slice(0, recordsCount);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
             this.setState({
@@ -114,8 +115,8 @@ class Audit extends Component {
             return;
         }
 
-        var arr = [].concat(this.state.responseData);
-        var items = arr.filter((el) => el.name.toLowerCase().indexOf(text.toLowerCase()) != -1);
+        let arr = [].concat(this.state.responseData);
+        let items = arr.filter((el) => el.name.toLowerCase().indexOf(text.toLowerCase()) != -1);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items),
             resultsCount: items.length,
@@ -138,7 +139,7 @@ class Audit extends Component {
     }
 
     render() {
-        var errorCtrl, loader;
+        let errorCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
