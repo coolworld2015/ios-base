@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
@@ -144,6 +145,17 @@ class Audit extends Component {
         })
     }
 
+    clearSearchQuery() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            resultsCount: this.state.responseData.length,
+            filteredItems: this.state.responseData,
+            positionY: 0,
+            recordsCount: 25,
+            searchQuery: ''
+        });
+    }
+
     render() {
         let errorCtrl, loader;
 
@@ -187,11 +199,13 @@ class Audit extends Component {
                 </ScrollView>
 
                 <View>
-                    <Text style={styles.countFooter}>
-                        Records: {this.state.resultsCount}
-                    </Text>
+                    <TouchableWithoutFeedback
+                        onPress={() => this.clearSearchQuery()}>
+                        <Text style={styles.countFooter}>
+                            Records: {this.state.resultsCount}
+                        </Text>
+                    </TouchableWithoutFeedback>
                 </View>
-
             </View>
         )
     }

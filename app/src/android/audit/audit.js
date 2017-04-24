@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
@@ -138,6 +139,17 @@ class Audit extends Component {
         this.props.navigator.pop();
     }
 
+    clearSearchQuery() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            resultsCount: this.state.responseData.length,
+            filteredItems: this.state.responseData,
+            positionY: 0,
+            recordsCount: 25,
+            searchQuery: ''
+        });
+    }
+
     render() {
         let errorCtrl, loader;
 
@@ -170,14 +182,13 @@ class Audit extends Component {
                         </TouchableHighlight>
                     </View>
                     <View>
-                        <TouchableHighlight
-                            underlayColor='#ddd'
-                            onPress={() => this.goBack()}
+                        <TouchableWithoutFeedback
+                            onPress={() => this.clearSearchQuery()}
                         >
                             <Text style={styles.textLarge}>
                                 Audit
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
                         <TouchableHighlight
