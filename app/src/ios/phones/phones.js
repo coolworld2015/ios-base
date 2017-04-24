@@ -204,6 +204,7 @@ class Phones extends Component {
                 </View>
 
                 {errorCtrl}
+
                 {loader}
 
                 <ScrollView

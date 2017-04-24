@@ -28,7 +28,7 @@ class AppContainer extends Component {
 
     render() {
         return (
-            <TabBarIOS style={styles.AppContainer}>
+            <TabBarIOS>
 
                 <TabBarIOS.Item
                     title="Phones"
@@ -109,14 +109,5 @@ class AppContainer extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    AppContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        //backgroundColor: '#F5FCFF',
- 
-});
 
 export default AppContainer;

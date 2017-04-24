@@ -76,7 +76,7 @@ class Login extends Component {
     render() {
         let errorCtrl;
 
-        if (!this.state.success && this.state.badCredentials) {
+        if (this.state.badCredentials) {
             errorCtrl = <Text style={styles.error}>
                 That username and password combination did not work
             </Text>;
@@ -88,9 +88,10 @@ class Login extends Component {
                     <Image style={styles.logo}
                            source={require('../../../img/logo.jpg')}
                     />
-                    <Text style={styles.heading}>Base</Text>
+                    <Text style={styles.heading}>
+                        Base
+                    </Text>
                     <TextInput
-                        ref="username"
                         onChangeText={(text) => this.setState({
                             username: text,
                             badCredentials: false
@@ -112,12 +113,11 @@ class Login extends Component {
                     </TextInput>
 
                     <TouchableHighlight
-                        //onPress={this.onLoginPressed.bind(this)}
                         onPress={() => this.onLogin()}
                         style={styles.button}>
                         <Text style={styles.buttonText}>
-							Log in
-						</Text>
+                            Log in
+                        </Text>
                     </TouchableHighlight>
 
                     {errorCtrl}
@@ -155,7 +155,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontWeight: 'bold'
     },
- 
     loginInput: {
         height: 50,
         marginTop: 10,

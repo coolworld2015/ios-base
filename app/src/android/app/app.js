@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {Component} from 'react';
 import {
 	BackAndroid
@@ -22,8 +24,8 @@ class App extends Component {
         this.state = {
             isLoggedIn: false
         };
-		
-        appConfig = {
+
+        window.appConfig = {
             access_token: '',
 			url: 'http://jwt-base.herokuapp.com/',
 			users: {

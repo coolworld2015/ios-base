@@ -10,7 +10,7 @@ import {
     ScrollView,
     ActivityIndicator,
     TextInput,
-	Dimensions
+    Dimensions
 } from 'react-native';
 
 class Login extends Component {
@@ -19,22 +19,22 @@ class Login extends Component {
 
         this.state = {
             showProgress: false,
-			username: '1',
-			password: '1',
-			bugANDROID: ''
+            username: '1',
+            password: '1',
+            bugANDROID: ''
         }
     }
-	
-	componentDidMount() {
-		this.setState({
-			width: Dimensions.get('window').width
+
+    componentDidMount() {
+        this.setState({
+            width: Dimensions.get('window').width
         });
-	}
-	
+    }
+
     onLogin() {
-		this.setState({
+        this.setState({
             showProgress: true,
-			bugANDROID: ' '
+            bugANDROID: ' '
         });
 
         if (this.state.username == undefined ||
@@ -44,43 +44,43 @@ class Login extends Component {
             });
             return;
         }
-		
-		var url = appConfig.url;
-		
+
+        var url = appConfig.url;
+
         fetch(appConfig.url + 'api/login', {
             method: 'post',
-			body: JSON.stringify({
+            body: JSON.stringify({
                 name: this.state.username,
                 pass: this.state.password,
-				description: 'Android'
+                description: 'Android'
             }),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
-				if (responseData.token) {
-					appConfig.access_token = responseData.token;
-					
-					this.setState({
-						badCredentials: false
-					});
-					
-					this.props.onLogin();
-				} else {
-					this.setState({
-						badCredentials: true
-					});
-				}
+            .then((response) => response.json())
+            .then((responseData) => {
+                if (responseData.token) {
+                    appConfig.access_token = responseData.token;
+
+                    this.setState({
+                        badCredentials: false
+                    });
+
+                    this.props.onLogin();
+                } else {
+                    this.setState({
+                        badCredentials: true
+                    });
+                }
             })
-            .catch((error)=> {
+            .catch((error) => {
                 this.setState({
                     badCredentials: true
                 });
             })
-            .finally(()=> {
+            .finally(() => {
                 this.setState({
                     showProgress: false
                 });
@@ -90,15 +90,9 @@ class Login extends Component {
     render() {
         let errorCtrl;
 
-        if (!this.state.success && this.state.badCredentials) {
+        if (this.state.badCredentials) {
             errorCtrl = <Text style={styles.error}>
                 That username and password combination did not work
-            </Text>;
-        }
-
-        if (!this.state.success && this.state.unknownError) {
-            errorCtrl = <Text style={styles.error}>
-                We experienced an unexpected issue
             </Text>;
         }
 
@@ -106,64 +100,66 @@ class Login extends Component {
             <ScrollView>
                 <View style={styles.container}>
                     <Image style={styles.logo}
-						source={require('../../../img/logo.jpg')}
+                           source={require('../../../img/logo.jpg')}
                     />
-					<View style={styles.headerContainer}>
-						<Text style={styles.heading}>
-							Base
-						</Text>
-					</View>
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.heading}>
+                            Base
+                        </Text>
+                    </View>
                     <TextInput
-						underlineColorAndroid='rgba(0,0,0,0)'
-                        onChangeText={(text)=> this.setState({
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        onChangeText={(text) => this.setState({
                             username: text,
                             badCredentials: false
                         })}
-                         style={{ 
-							height: 50,
-							width: this.state.width * .90,
-							marginTop: 10,
-							padding: 4,
-							fontSize: 18,
-							borderWidth: 1,
-							borderColor: 'lightgray',
-							borderRadius: 5,
-							color: 'black',
-							backgroundColor: 'white',
+                        style={{
+                            height: 50,
+                            width: this.state.width * .90,
+                            marginTop: 10,
+                            padding: 4,
+                            fontSize: 18,
+                            borderWidth: 1,
+                            borderColor: 'lightgray',
+                            borderRadius: 5,
+                            color: 'black',
+                            backgroundColor: 'white',
                             fontWeight: 'bold'
-						}} 
-                        placeholder='Login'>1
+                        }}
+                        value={this.state.username}
+                        placeholder='Login'>
                     </TextInput>
 
                     <TextInput
-						underlineColorAndroid='rgba(0,0,0,0)'
-                        onChangeText={(text)=> this.setState({
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        onChangeText={(text) => this.setState({
                             password: text,
                             badCredentials: false
                         })}
-                        style={{ 
-							height: 50,
-							width: this.state.width * .90,
-							marginTop: 10,
-							padding: 4,
-							fontSize: 18,
-							borderWidth: 1,
-							borderColor: 'lightgray',
-							borderRadius: 5,
-							color: 'black',
-							backgroundColor: 'white',
+                        style={{
+                            height: 50,
+                            width: this.state.width * .90,
+                            marginTop: 10,
+                            padding: 4,
+                            fontSize: 18,
+                            borderWidth: 1,
+                            borderColor: 'lightgray',
+                            borderRadius: 5,
+                            color: 'black',
+                            backgroundColor: 'white',
                             fontWeight: 'bold'
-						}} 
-                        placeholder='Password' 
-						secureTextEntry={true}>1
+                        }}
+                        value={this.state.password}
+                        placeholder='Password'
+                        secureTextEntry={true}>
                     </TextInput>
 
                     <TouchableHighlight
-                        onPress={()=> this.onLogin()}
-						style={styles.button}>
+                        onPress={() => this.onLogin()}
+                        style={styles.button}>
                         <Text style={styles.buttonText}>
-							Log in
-						</Text>
+                            Log in
+                        </Text>
                     </TouchableHighlight>
 
                     {errorCtrl}
@@ -173,8 +169,8 @@ class Login extends Component {
                         size="large"
                         style={styles.loader}
                     />
-					
-					<Text>{this.state.bugANDROID}</Text>
+
+                    <Text>{this.state.bugANDROID}</Text>
                 </View>
             </ScrollView>
         )
@@ -191,40 +187,39 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         flex: 1
-    },    
+    },
     logo: {
         width: 150,
         height: 150,
         paddingTop: 140,
         borderRadius: 20,
-    },	
-	headerContainer: {
-		justifyContent: 'center',
-		alignItems: 'center'
     },
-
+    headerContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     heading: {
         fontSize: 30,
         marginTop: 10,
-		color: 'black',
+        color: 'black',
         fontWeight: 'bold',
-		textAlign: 'center'
+        textAlign: 'center'
     },
     button: {
-		height: 50,
-		backgroundColor: '#48BBEC',
-		borderColor: '#48BBEC',
-		alignSelf: 'stretch',
-		marginTop: 10,
-		margin: 5,
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderRadius: 5
+        height: 50,
+        backgroundColor: '#48BBEC',
+        borderColor: '#48BBEC',
+        alignSelf: 'stretch',
+        marginTop: 10,
+        margin: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5
     },
     buttonText: {
         color: '#fff',
         fontSize: 24,
-		fontWeight: 'bold'
+        fontWeight: 'bold'
     },
     loader: {
         marginTop: 20
