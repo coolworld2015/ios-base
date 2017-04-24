@@ -169,6 +169,17 @@ class Users extends Component {
         this.props.navigator.pop();
     }
 
+    clearSearchQuery() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            resultsCount: this.state.responseData.length,
+            filteredItems: this.state.responseData,
+            positionY: 0,
+            recordsCount: 25,
+            searchQuery: ''
+        });
+    }
+
     render() {
         let errorCtrl, loader;
 
@@ -193,7 +204,6 @@ class Users extends Component {
                     <View>
                         <TouchableWithoutFeedback
                             onPress={() => this.refreshDataAndroid()}
-                            underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                                 Reload
@@ -202,8 +212,7 @@ class Users extends Component {
                     </View>
                     <View>
                         <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                            onPress={() => this.goBack()}
+                            onPress={() => this.clearSearchQuery()}
                         >
                             <Text style={styles.textLarge}>
                                 Users
@@ -213,7 +222,6 @@ class Users extends Component {
                     <View>
                         <TouchableWithoutFeedback
                             onPress={() => this.addItem()}
-                            underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                                 New
