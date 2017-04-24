@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
@@ -18,7 +19,7 @@ class Phones extends Component {
     constructor(props) {
         super(props);
 
-        var ds = new ListView.DataSource({
+        let ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 != r2
         });
 
@@ -44,8 +45,8 @@ class Phones extends Component {
                 'Authorization': appConfig.access_token
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
+            .then((response) => response.json())
+            .then((responseData) => {
 
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 25)),
@@ -54,12 +55,12 @@ class Phones extends Component {
                     filteredItems: responseData
                 });
             })
-            .catch((error)=> {
+            .catch((error) => {
                 this.setState({
                     serverError: true
                 });
             })
-            .finally(()=> {
+            .finally(() => {
                 this.setState({
                     showProgress: false
                 });
@@ -67,7 +68,7 @@ class Phones extends Component {
     }
 
     sort(a, b) {
-        var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
         if (nameA < nameB) {
             return -1
         }
@@ -90,18 +91,10 @@ class Phones extends Component {
     renderRow(rowData) {
         return (
             <TouchableHighlight
-                onPress={()=> this.showDetails(rowData)}
+                onPress={() => this.showDetails(rowData)}
                 underlayColor='#ddd'
             >
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    padding: 20,
-                    alignItems: 'center',
-                    borderColor: '#D7D7D7',
-                    borderBottomWidth: 1,
-                    backgroundColor: '#fff'
-                }}>
+                <View style={styles.row}>
                     <Text style={{backgroundColor: '#fff', fontWeight: 'bold'}}>
                         {rowData.name} - {rowData.phone}
                     </Text>
@@ -133,19 +126,17 @@ class Phones extends Component {
             return;
         }
 
-        var items, positionY, recordsCount;
+        let items, positionY, recordsCount;
         recordsCount = this.state.recordsCount;
         positionY = this.state.positionY;
         items = this.state.filteredItems.slice(0, recordsCount);
-
-        //console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
             console.log(items.length);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(items),
-                recordsCount: recordsCount + 20,
-                positionY: positionY + 1000
+                recordsCount: recordsCount + 10,
+                positionY: positionY + 500
             });
         }
     }
@@ -155,8 +146,8 @@ class Phones extends Component {
             return;
         }
 
-        var arr = [].concat(this.state.responseData);
-        var items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) != -1);
+        let arr = [].concat(this.state.responseData);
+        let items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) != -1);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items),
             resultsCount: items.length,
@@ -165,8 +156,19 @@ class Phones extends Component {
         })
     }
 
+    clearSearchQuery() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            resultsCount: this.state.responseData.length,
+            filteredItems: this.state.responseData,
+            positionY: 0,
+            recordsCount: 25,
+            searchQuery: ''
+        });
+    }
+
     render() {
-        var errorCtrl, loader;
+        let errorCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -175,10 +177,7 @@ class Phones extends Component {
         }
 
         if (this.state.showProgress) {
-            loader = <View style={{
-                justifyContent: 'center',
-                height: 100
-            }}>
+            loader = <View style={styles.loader}>
                 <ActivityIndicator
                     size="large"
                     animating={true}/>
@@ -186,20 +185,13 @@ class Phones extends Component {
         }
 
         return (
-            <View style={{flex: 1, justifyContent: 'center'}}>
-                <View style={{marginTop: 60}}>
-                    <TextInput style={{
-                        height: 45,
-                        marginTop: 4,
-                        padding: 5,
-                        backgroundColor: 'white',
-                        borderWidth: 3,
-                        borderColor: 'lightgray',
-                        borderRadius: 0,
-                    }}
-						onChangeText={this.onChangeText.bind(this)}
-						value={this.state.searchQuery}
-						placeholder="Search here">
+            <View style={styles.container}>
+                <View style={styles.search}>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={this.onChangeText.bind(this)}
+                        value={this.state.searchQuery}
+                        placeholder="Search here">
                     </TextInput>
                 </View>
 
@@ -210,16 +202,19 @@ class Phones extends Component {
                 <ScrollView
                     onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
                     <ListView
-                        style={{marginTop: -65, marginBottom: -45}}
+                        style={styles.scroll}
                         dataSource={this.state.dataSource}
                         renderRow={this.renderRow.bind(this)}
                     />
                 </ScrollView>
 
-                <View style={{marginBottom: 49}}>
-                    <Text style={styles.countFooter}>
-                        Records: {this.state.resultsCount}
-                    </Text>
+                <View>
+                    <TouchableWithoutFeedback
+                        onPress={() => this.clearSearchQuery()}>
+                        <Text style={styles.countFooter}>
+                            Records: {this.state.resultsCount}
+                        </Text>
+                    </TouchableWithoutFeedback>
                 </View>
             </View>
         );
@@ -227,16 +222,60 @@ class Phones extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'white'
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#48BBEC',
+        borderWidth: 0,
+        borderColor: 'whitesmoke'
+    },
+    search: {
+        marginTop: 60
+    },
+    textInput: {
+        height: 45,
+        marginTop: 4,
+        padding: 5,
+        backgroundColor: 'white',
+        borderWidth: 3,
+        borderColor: 'lightgray',
+        borderRadius: 0,
+    },
+    row: {
+        flex: 1,
+        flexDirection: 'row',
+        padding: 20,
+        alignItems: 'center',
+        borderColor: '#D7D7D7',
+        borderBottomWidth: 1,
+        backgroundColor: '#fff'
+    },
+    rowText: {
+        backgroundColor: '#fff',
+        color: 'black',
+        fontWeight: 'bold'
+    },
+    scroll: {
+        marginTop: -65,
+        marginBottom: -45
+    },
     countFooter: {
-        fontSize: 14,
+        fontSize: 16,
         textAlign: 'center',
         padding: 10,
         borderColor: '#D7D7D7',
         backgroundColor: 'whitesmoke',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 49
     },
     loader: {
-        marginTop: 20
+        justifyContent: 'center',
+        height: 100
     },
     error: {
         color: 'red',

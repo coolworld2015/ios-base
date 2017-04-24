@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
@@ -16,7 +17,7 @@ class Phones extends Component {
     constructor(props) {
         super(props);
 
-        var ds = new ListView.DataSource({
+        let ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 != r2
         });
 
@@ -66,7 +67,7 @@ class Phones extends Component {
     }
 
     sort(a, b) {
-        var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
         if (nameA < nameB) {
             return -1
         }
@@ -113,9 +114,10 @@ class Phones extends Component {
             return;
         }
 
-        var recordsCount = this.state.recordsCount;
-        var positionY = this.state.positionY;
-        var items = this.state.filteredItems.slice(0, recordsCount);
+        let items, positionY, recordsCount;
+        recordsCount = this.state.recordsCount;
+        positionY = this.state.positionY;
+        items = this.state.filteredItems.slice(0, recordsCount);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
             this.setState({
@@ -131,8 +133,8 @@ class Phones extends Component {
             return;
         }
 
-        var arr = [].concat(this.state.responseData);
-        var items = arr.filter((el) => el.name.toLowerCase().indexOf(text.toLowerCase()) != -1);
+        let arr = [].concat(this.state.responseData);
+        let items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) != -1);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items),
             resultsCount: items.length,
@@ -154,8 +156,19 @@ class Phones extends Component {
         this.props.navigator.pop();
     }
 
+    clearSearchQuery() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            resultsCount: this.state.responseData.length,
+            filteredItems: this.state.responseData,
+            positionY: 0,
+            recordsCount: 25,
+            searchQuery: ''
+        });
+    }
+
     render() {
-        var errorCtrl, loader;
+        let errorCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -176,34 +189,34 @@ class Phones extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             onPress={() => this.refreshDataAndroid()}
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                                 Reload
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             underlayColor='#ddd'
-                            onPress={() => this.goBack()}
+                            onPress={() => this.clearSearchQuery()}
                         >
                             <Text style={styles.textLarge}>
                                 Phones
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             onPress={() => this.goSearch()}
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                                 Search
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                 </View>
 

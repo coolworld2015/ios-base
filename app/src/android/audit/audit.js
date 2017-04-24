@@ -172,14 +172,14 @@ class Audit extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             onPress={() => this.refreshDataAndroid()}
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                                 Reload
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
                         <TouchableWithoutFeedback
@@ -191,12 +191,12 @@ class Audit extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                 </View>
 
