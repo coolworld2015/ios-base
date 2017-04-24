@@ -6,10 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
-    ListView,
-    ScrollView,
-    ActivityIndicator,
-    TextInput
+    ScrollView
 } from 'react-native';
 
 class PhoneDetails extends Component {
@@ -114,7 +111,7 @@ class PhoneDetails extends Component {
                         </View>
 
                         <TouchableHighlight
-                            onPress={()=> this.goBack()}
+                            onPress={() => this.goBack()}
                             style={styles.button}>
                             <Text style={styles.buttonText}>
                                 Back

@@ -6,10 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
-    ListView,
-    ScrollView,
-    ActivityIndicator,
-    TextInput
+    ScrollView
 } from 'react-native';
 
 class AuditDetails extends Component {

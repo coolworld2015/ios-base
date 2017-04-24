@@ -6,7 +6,6 @@ import {
     Text,
     View,
     TouchableHighlight,
-    ListView,
     ScrollView,
     ActivityIndicator,
     TextInput
@@ -53,18 +52,18 @@ class UserDetails extends Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
+            .then((response) => response.json())
+            .then((responseData) => {
                 appConfig.users.refresh = true;
                 this.props.navigator.pop();
             })
-            .catch((error)=> {
+            .catch((error) => {
                 console.log(error);
                 this.setState({
                     serverError: true
                 });
             })
-            .finally(()=> {
+            .finally(() => {
                 this.setState({
                     showProgress: false
                 });
@@ -72,7 +71,7 @@ class UserDetails extends Component {
     }
 
     render() {
-        var errorCtrl, validCtrl;
+        let errorCtrl, validCtrl;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -95,7 +94,7 @@ class UserDetails extends Component {
                 }}>
 
                     <TextInput
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             name: text,
                             invalidValue: false
                         })}
@@ -105,7 +104,7 @@ class UserDetails extends Component {
                     </TextInput>
 
                     <TextInput
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             pass: text,
                             invalidValue: false
                         })}
@@ -116,7 +115,7 @@ class UserDetails extends Component {
 
                     <TextInput
                         multiline={true}
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             description: text,
                             invalidValue: false
                         })}
@@ -128,7 +127,7 @@ class UserDetails extends Component {
                     {validCtrl}
 
                     <TouchableHighlight
-                        onPress={()=> this.updateUser()}
+                        onPress={() => this.updateUser()}
                         style={styles.button}>
                         <Text style={styles.buttonText}>Submit</Text>
                     </TouchableHighlight>

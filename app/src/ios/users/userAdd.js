@@ -2,21 +2,14 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
-    ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput
 } from 'react-native';
-
-import Users from './users';
 
 class UserAdd extends Component {
     constructor(props) {
@@ -44,7 +37,7 @@ class UserAdd extends Component {
         fetch(appConfig.url + 'api/users/add', {
             method: 'post',
             body: JSON.stringify({
-                id: + new Date,
+                id: +new Date,
                 name: this.state.name,
                 pass: this.state.pass,
                 description: this.state.description,
@@ -55,18 +48,18 @@ class UserAdd extends Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
+            .then((response) => response.json())
+            .then((responseData) => {
                 appConfig.users.refresh = true;
                 this.props.navigator.pop();
             })
-            .catch((error)=> {
+            .catch((error) => {
                 console.log(error);
                 this.setState({
                     serverError: true
                 });
             })
-            .finally(()=> {
+            .finally(() => {
                 this.setState({
                     showProgress: false
                 });
@@ -74,7 +67,7 @@ class UserAdd extends Component {
     }
 
     render() {
-        var errorCtrl, validCtrl;
+        let errorCtrl, validCtrl;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -97,7 +90,7 @@ class UserAdd extends Component {
                 }}>
 
                     <TextInput
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             name: text,
                             invalidValue: false
                         })}
@@ -107,7 +100,7 @@ class UserAdd extends Component {
                     </TextInput>
 
                     <TextInput
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             pass: text,
                             invalidValue: false
                         })}
@@ -118,7 +111,7 @@ class UserAdd extends Component {
 
                     <TextInput
                         multiline={true}
-                        onChangeText={(text)=> this.setState({
+                        onChangeText={(text) => this.setState({
                             description: text,
                             invalidValue: false
                         })}
@@ -130,7 +123,7 @@ class UserAdd extends Component {
                     {validCtrl}
 
                     <TouchableHighlight
-                        onPress={()=> this.addItem()}
+                        onPress={() => this.addItem()}
                         style={styles.button}>
                         <Text style={styles.buttonText}>Add</Text>
                     </TouchableHighlight>

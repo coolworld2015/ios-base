@@ -6,27 +6,28 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
     TextInput,
-	BackAndroid
+    BackAndroid
 } from 'react-native';
 
 class UserAdd extends Component {
     constructor(props) {
         super(props);
-		
-		BackAndroid.addEventListener('hardwareBackPress', () => {
-			if (this.props.navigator) {
-				this.props.navigator.pop();
-			}
-			return true;
-		});
-		
+
+        BackAndroid.addEventListener('hardwareBackPress', () => {
+            if (this.props.navigator) {
+                this.props.navigator.pop();
+            }
+            return true;
+        });
+
         this.state = {
             showProgress: false,
-			bugANDROID: ''
+            bugANDROID: ''
         }
     }
 
@@ -42,190 +43,190 @@ class UserAdd extends Component {
 
         this.setState({
             showProgress: true,
-			bugANDROID: ' '
+            bugANDROID: ' '
         });
-		
+
         fetch(appConfig.url + 'api/users/add', {
             method: 'post',
             body: JSON.stringify({
-                id: + new Date,
+                id: +new Date,
                 name: this.state.name,
                 pass: this.state.pass,
                 description: this.state.description,
-				authorization: appConfig.access_token
+                authorization: appConfig.access_token
             }),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=> response.json())
-            .then((responseData)=> {
+            .then((response) => response.json())
+            .then((responseData) => {
                 appConfig.users.refresh = true;
                 this.props.navigator.pop();
             })
-            .catch((error)=> {
+            .catch((error) => {
                 console.log(error);
                 this.setState({
                     serverError: true
                 });
             })
-            .finally(()=> {
+            .finally(() => {
                 this.setState({
                     showProgress: false
                 });
             });
     }
-	
-	goBack() {
-		this.props.navigator.pop();
-	}
-	
+
+    goBack() {
+        this.props.navigator.pop();
+    }
+
     render() {
         var errorCtrl, validCtrl;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
-							Something went wrong.
-						</Text>;
+                Something went wrong.
+            </Text>;
         }
 
         if (this.state.invalidValue) {
             validCtrl = <Text style={styles.error}>
-							Value required - please provide.
-						</Text>;
+                Value required - please provide.
+            </Text>;
         }
 
         return (
             <View style={styles.container}>
-				<View style={styles.header}>
-					<View>
-						<TouchableHighlight
-							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
-						>
-							<Text style={styles.textSmall}>
-								Back
-							</Text>
-						</TouchableHighlight>	
-					</View>
-					<View>
-						<TouchableHighlight
-							underlayColor='#ddd'
-						>
-							<Text style={styles.textLarge}>
-								New record
-							</Text>
-						</TouchableHighlight>	
-					</View>						
-					<View>
-						<TouchableHighlight
-							underlayColor='#ddd'
-						>
-							<Text style={styles.textSmall}>
-							</Text>
-						</TouchableHighlight>	
-					</View>
-				</View>
-				
-				<ScrollView>
-					<View style={styles.form}>
-						<TextInput
-							underlineColorAndroid='rgba(0,0,0,0)'
-							onChangeText={(text)=> this.setState({
-								name: text,
-								invalidValue: false
-							})}
-							style={styles.formInput}
-							value={this.state.name}
-							placeholder='Login'>
-						</TextInput>
+                <View style={styles.header}>
+                    <View>
+                        <TouchableWithoutFeedback
+                            onPress={() => this.goBack()}
+                            underlayColor='#ddd'
+                        >
+                            <Text style={styles.textSmall}>
+                                Back
+                            </Text>
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <TouchableWithoutFeedback
+                            underlayColor='#ddd'
+                        >
+                            <Text style={styles.textLarge}>
+                                New record
+                            </Text>
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <TouchableWithoutFeedback
+                            underlayColor='#ddd'
+                        >
+                            <Text style={styles.textSmall}>
+                            </Text>
+                        </TouchableWithoutFeedback>
+                    </View>
+                </View>
 
-						<TextInput
-							underlineColorAndroid='rgba(0,0,0,0)'
-							onChangeText={(text)=> this.setState({
-								pass: text,
-								invalidValue: false
-							})}
-							style={styles.formInput}
-							value={this.state.pass}
-							placeholder='Password'>
-						</TextInput>
+                <ScrollView>
+                    <View style={styles.form}>
+                        <TextInput
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                            onChangeText={(text) => this.setState({
+                                name: text,
+                                invalidValue: false
+                            })}
+                            style={styles.formInput}
+                            value={this.state.name}
+                            placeholder='Login'>
+                        </TextInput>
 
-						<TextInput
-							underlineColorAndroid='rgba(0,0,0,0)'
-							multiline={true}
-							onChangeText={(text)=> this.setState({
-								description: text,
-								invalidValue: false
-							})}
-							style={styles.formInputArea}
-							value={this.state.description}
-							placeholder='Description'>
-						</TextInput>
+                        <TextInput
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                            onChangeText={(text) => this.setState({
+                                pass: text,
+                                invalidValue: false
+                            })}
+                            style={styles.formInput}
+                            value={this.state.pass}
+                            placeholder='Password'>
+                        </TextInput>
 
-						{validCtrl}
+                        <TextInput
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                            multiline={true}
+                            onChangeText={(text) => this.setState({
+                                description: text,
+                                invalidValue: false
+                            })}
+                            style={styles.formInputArea}
+                            value={this.state.description}
+                            placeholder='Description'>
+                        </TextInput>
 
-						<TouchableHighlight
-							onPress={()=> this.addItem()}
-							style={styles.button}>
-							<Text style={styles.buttonText}>
-								Add
-							</Text>
-						</TouchableHighlight>
+                        {validCtrl}
 
-						{errorCtrl}
+                        <TouchableHighlight
+                            onPress={() => this.addItem()}
+                            style={styles.button}>
+                            <Text style={styles.buttonText}>
+                                Add
+                            </Text>
+                        </TouchableHighlight>
 
-						<ActivityIndicator
-							animating={this.state.showProgress}
-							size="large"
-							style={styles.loader}
-						/>
-						
-						<Text>{this.state.bugANDROID}</Text>
-					</View>
-				</ScrollView>
-			</View>
+                        {errorCtrl}
+
+                        <ActivityIndicator
+                            animating={this.state.showProgress}
+                            size="large"
+                            style={styles.loader}
+                        />
+
+                        <Text>{this.state.bugANDROID}</Text>
+                    </View>
+                </ScrollView>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1, 
-		justifyContent: 'center', 
-		backgroundColor: 'white'
-	},		
-	header: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		backgroundColor: '#48BBEC',
-		borderWidth: 0,
-		borderColor: 'whitesmoke'
-	},	
-	textSmall: {
-		fontSize: 16,
-		textAlign: 'center',
-		margin: 14,
-		fontWeight: 'bold',
-		color: 'white'
-	},		
-	textLarge: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10,
-		marginRight: 40,
-		fontWeight: 'bold',
-		color: 'white'
-	},	
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'white'
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#48BBEC',
+        borderWidth: 0,
+        borderColor: 'whitesmoke'
+    },
+    textSmall: {
+        fontSize: 16,
+        textAlign: 'center',
+        margin: 14,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    textLarge: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        marginRight: 40,
+        fontWeight: 'bold',
+        color: 'white'
+    },
     form: {
-		flex: 1,
-		padding: 10,
-		justifyContent: 'flex-start',
-		paddingBottom: 130,
-		backgroundColor: 'white'
-    },    
-	formInput: {
+        flex: 1,
+        padding: 10,
+        justifyContent: 'flex-start',
+        paddingBottom: 130,
+        backgroundColor: 'white'
+    },
+    formInput: {
         height: 50,
         marginTop: 10,
         padding: 4,
@@ -235,7 +236,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         color: 'black'
     },
-	formInputArea: {
+    formInputArea: {
         height: 100,
         marginTop: 10,
         padding: 4,
@@ -244,7 +245,7 @@ const styles = StyleSheet.create({
         borderColor: 'lightgray',
         borderRadius: 5,
         color: 'black'
-    },	
+    },
     button: {
         height: 50,
         backgroundColor: '#48BBEC',
@@ -258,7 +259,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontSize: 20,
-		fontWeight: 'bold'
+        fontWeight: 'bold'
     },
     loader: {
         marginTop: 20
