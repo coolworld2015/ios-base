@@ -7,6 +7,7 @@ import {
     View,
     Image,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
@@ -69,7 +70,7 @@ class Search extends Component {
     }
 
     render() {
-        var validCtrl = <View />;
+        let validCtrl;
 
         if (this.state.invalidValue) {
             validCtrl = <Text style={styles.error}>
@@ -83,33 +84,21 @@ class Search extends Component {
                     <TouchableHighlight
                         onPress={this.clearSearch.bind(this)}
                         style={styles.button}>
-                        <Text style={styles.buttonText}>Search</Text>
+                        <Text style={styles.buttonText}>
+                            Search
+                        </Text>
                     </TouchableHighlight>
 
-                    <View style={{
-                        height: 50,
-                        marginTop: 10,
-                        padding: 10,
-                        borderWidth: 1,
-                        borderColor: '#48BBEC',
-                        alignSelf: 'stretch',
-                        flex: 1,
-                        flexDirection: 'row',
-                        borderRadius: 5
-                    }}>
-                        <View style={{marginTop: 3, flex: 1}}>
-                            <Text style={{fontSize: 18}}>
+                    <View style={styles.form}>
+                        <View style={styles.textForm}>
+                            <Text style={styles.text}>
                                 {this.state.textSwitchBase}
                             </Text>
                         </View>
 
-                        <View
-                            style={{
-                                marginTop: -1
-                            }}>
+                        <View>
                             <Switch
                                 onValueChange={(value) => {
-                                    console.log(value);
                                     this.toggleTypeChange();
                                     this.setState({
                                         eventSwitchTitle: value
@@ -135,7 +124,9 @@ class Search extends Component {
                     <TouchableHighlight
                         onPress={this.onSearchPressed.bind(this)}
                         style={styles.button}>
-                        <Text style={styles.buttonText}>Search</Text>
+                        <Text style={styles.buttonText}>
+                            Submit
+                        </Text>
                     </TouchableHighlight>
 
                     <ActivityIndicator
@@ -155,9 +146,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1
     },
+    form: {
+        height: 50,
+        marginTop: 10,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#48BBEC',
+        alignSelf: 'stretch',
+        flex: 1,
+        flexDirection: 'row',
+        borderRadius: 5,
+        fontSize: 18
+    },
+    textForm: {
+        marginTop: 3,
+        flex: 1
+    },
+    text: {
+        fontSize: 18,
+        color: 'gray'
+    },
     loginInput: {
         height: 50,
         marginTop: 10,
+        paddingLeft: 10,
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
@@ -177,7 +189,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fff',
-        fontSize: 24
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     loader: {
         marginTop: 20
