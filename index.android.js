@@ -7,4 +7,5 @@ import {
 } from 'react-native';
 
 import App from './app/src/android/app/app';
+
 AppRegistry.registerComponent('rn', () => App);
