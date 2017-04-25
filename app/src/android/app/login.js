@@ -37,8 +37,8 @@ class Login extends Component {
             bugANDROID: ' '
         });
 
-        if (this.state.username == undefined ||
-            this.state.password == undefined) {
+        if (this.state.username === undefined || this.state.username === '' ||
+            this.state.password === undefined || this.state.password === '') {
             this.setState({
                 badCredentials: true
             });
