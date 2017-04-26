@@ -59,7 +59,6 @@ class Users extends Component {
         })
             .then((response) => response.json())
             .then((responseData) => {
-
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 25)),
                     resultsCount: responseData.length,

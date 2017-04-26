@@ -65,7 +65,6 @@ class UserAdd extends Component {
                 this.props.navigator.pop();
             })
             .catch((error) => {
-                console.log(error);
                 this.setState({
                     serverError: true
                 });

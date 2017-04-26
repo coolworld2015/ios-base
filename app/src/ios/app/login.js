@@ -24,10 +24,6 @@ class Login extends Component {
     }
 
     onLogin() {
-        this.setState({
-            showProgress: true
-        });
-
         if (this.state.username === undefined || this.state.username === '' ||
             this.state.password === undefined || this.state.password === '') {
             this.setState({
@@ -36,6 +32,9 @@ class Login extends Component {
             return;
         }
 
+        this.setState({
+            showProgress: true
+        });
 
         fetch(window.appConfig.url + 'api/login', {
             method: 'post',

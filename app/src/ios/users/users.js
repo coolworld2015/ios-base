@@ -63,7 +63,6 @@ class Users extends Component {
         })
             .then((response) => response.json())
             .then((responseData) => {
-
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 25)),
                     resultsCount: responseData.length,
@@ -94,7 +93,7 @@ class Users extends Component {
         return 0;
     }
 
-    deleteUser(id) {
+    deleteItem(id) {
         this.setState({
             showProgress: true
         });
@@ -110,11 +109,18 @@ class Users extends Component {
                 'Content-Type': 'application/json'
             }
         })
-
+            .then((response) => response.json())
             .then((responseData) => {
+                if (responseData.text) {
+                    appConfig.users.refresh = true;
+                    this.props.navigator.pop();
+                } else {
+                    this.setState({
+                        badCredentials: true
+                    });
+                }
             })
             .catch((error) => {
-                console.log(error);
                 this.setState({
                     serverError: true
                 });
@@ -123,8 +129,6 @@ class Users extends Component {
                 this.setState({
                     showProgress: false
                 });
-                appConfig.users.refresh = true;
-                this.props.navigator.pop();
             });
     }
 
@@ -141,7 +145,7 @@ class Users extends Component {
                         {text: 'Cancel', onPress: () => console.log('Cancel Pressed!')},
                         {
                             text: 'OK', onPress: () => {
-                            this.deleteUser(rowData.id);
+                            this.deleteItem(rowData.id);
                         }
                         },
                     ]
