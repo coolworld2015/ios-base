@@ -25,9 +25,9 @@ class UserDetails extends Component {
     }
 
     updateUser() {
-        if (this.state.name == '' ||
-            this.state.pass == '' ||
-            this.state.description == '') {
+        if (this.state.name === undefined || this.state.name === '' ||
+            this.state.pass === undefined || this.state.pass === '' ||
+            this.state.description === undefined || this.state.description === '') {
             this.setState({
                 invalidValue: true
             });
@@ -86,7 +86,7 @@ class UserDetails extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView keyboardShouldPersistTaps={true}>
                 <View style={{
                     flex: 1,
                     padding: 10,

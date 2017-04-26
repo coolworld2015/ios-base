@@ -7,7 +7,6 @@ import {
     View,
     TouchableHighlight,
     TouchableWithoutFeedback,
-    ListView,
     ScrollView,
     ActivityIndicator,
     TextInput,
@@ -42,9 +41,9 @@ class UserDetails extends Component {
     }
 
     updateItem() {
-        if (this.state.name == '' ||
-            this.state.pass == '' ||
-            this.state.description == '') {
+        if (this.state.name === undefined || this.state.name === '' ||
+            this.state.pass === undefined || this.state.pass === '' ||
+            this.state.description === undefined || this.state.description === '') {
             this.setState({
                 invalidValue: true
             });
@@ -202,7 +201,7 @@ class UserDetails extends Component {
                     </View>
                 </View>
 
-                <ScrollView>
+                <ScrollView keyboardShouldPersistTaps={true}>
                     <View style={styles.form}>
                         <TextInput
                             underlineColorAndroid='rgba(0,0,0,0)'

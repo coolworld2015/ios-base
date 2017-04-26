@@ -7,7 +7,6 @@ import {
     View,
     TouchableHighlight,
     TouchableWithoutFeedback,
-    ListView,
     ScrollView,
     ActivityIndicator,
     TextInput,
@@ -32,9 +31,9 @@ class UserAdd extends Component {
     }
 
     addItem() {
-        if (this.state.name == undefined ||
-            this.state.pass == undefined ||
-            this.state.description == undefined) {
+        if (this.state.name === undefined || this.state.name === '' ||
+            this.state.pass === undefined || this.state.pass === '' ||
+            this.state.description === undefined || this.state.description === '') {
             this.setState({
                 invalidValue: true
             });
@@ -83,7 +82,7 @@ class UserAdd extends Component {
     }
 
     render() {
-        var errorCtrl, validCtrl;
+        let errorCtrl, validCtrl;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -129,7 +128,7 @@ class UserAdd extends Component {
                     </View>
                 </View>
 
-                <ScrollView>
+                <ScrollView keyboardShouldPersistTaps={true}>
                     <View style={styles.form}>
                         <TextInput
                             underlineColorAndroid='rgba(0,0,0,0)'

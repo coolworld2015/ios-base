@@ -21,7 +21,7 @@ class Users extends Component {
         super(props);
 
         let ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 != r2
+            rowHasChanged: (r1, r2) => r1 !== r2
         });
 
         this.state = {
@@ -128,7 +128,7 @@ class Users extends Component {
             });
     }
 
-    pressRow(rowData) {
+    showDetails(rowData) {
         this.props.navigator.push({
             title: rowData.name,
             component: UserDetails,
@@ -156,19 +156,11 @@ class Users extends Component {
     renderRow(rowData) {
         return (
             <TouchableHighlight
-                onPress={() => this.pressRow(rowData)}
+                onPress={() => this.showDetails(rowData)}
                 underlayColor='#ddd'
             >
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    padding: 20,
-                    alignItems: 'center',
-                    borderColor: '#D7D7D7',
-                    borderBottomWidth: 1,
-                    backgroundColor: '#fff'
-                }}>
-                    <Text style={{backgroundColor: '#fff', fontWeight: 'bold'}}>
+                <View style={styles.row}>
+                    <Text style={styles.rowText}>
                         {rowData.name}
                     </Text>
                 </View>
@@ -177,7 +169,7 @@ class Users extends Component {
     }
 
     refreshData(event) {
-        if (this.state.showProgress == true) {
+        if (this.state.showProgress === true) {
             return;
         }
 
@@ -195,7 +187,7 @@ class Users extends Component {
             }, 300);
         }
 
-        if (this.state.filteredItems == undefined) {
+        if (this.state.filteredItems === undefined) {
             return;
         }
 
@@ -215,12 +207,12 @@ class Users extends Component {
     }
 
     onChangeText(text) {
-        if (this.state.dataSource == undefined) {
+        if (this.state.dataSource === undefined) {
             return;
         }
 
         let arr = [].concat(this.state.responseData);
-        let items = arr.filter((el) => el.name.toLowerCase().indexOf(text.toLowerCase()) != -1);
+        let items = arr.filter((el) => el.name.toLowerCase().indexOf(text.toLowerCase()) !== -1);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items),
             resultsCount: items.length,
