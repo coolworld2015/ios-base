@@ -6,10 +6,8 @@ import {
     Text,
     View,
     TouchableHighlight,
-    ListView,
+    TouchableWithoutFeedback,
     ScrollView,
-    ActivityIndicator,
-    TextInput,
     BackAndroid
 } from 'react-native';
 
@@ -51,31 +49,31 @@ class AuditDetails extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             onPress={() => this.goBack()}
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                                 Back
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textLarge}>
                                 {this.state.date}
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
+                        <TouchableWithoutFeedback
                             underlayColor='#ddd'
                         >
                             <Text style={styles.textSmall}>
                             </Text>
-                        </TouchableHighlight>
+                        </TouchableWithoutFeedback>
                     </View>
                 </View>
 

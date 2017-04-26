@@ -79,7 +79,7 @@ class Search extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView keyboardShouldPersistTaps={true}>
                 <View style={styles.container}>
                     <TouchableHighlight
                         onPress={this.clearSearch.bind(this)}

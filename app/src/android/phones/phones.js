@@ -106,11 +106,11 @@ class Phones extends Component {
     }
 
     refreshData(event) {
-        if (this.state.showProgress == true) {
+        if (this.state.showProgress === true) {
             return;
         }
 
-        if (this.state.filteredItems == undefined) {
+        if (this.state.filteredItems === undefined) {
             return;
         }
 
@@ -129,12 +129,12 @@ class Phones extends Component {
     }
 
     onChangeText(text) {
-        if (this.state.dataSource == undefined) {
+        if (this.state.dataSource === undefined) {
             return;
         }
 
         let arr = [].concat(this.state.responseData);
-        let items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) != -1);
+        let items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) !== -1);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items),
             resultsCount: items.length,

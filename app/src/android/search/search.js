@@ -116,7 +116,7 @@ class Search extends Component {
                     </View>
                 </View>
 
-                <ScrollView>
+                <ScrollView keyboardShouldPersistTaps={true}>
                     <View style={styles.scrollBlock}>
                         <View style={styles.switchBlock}>
                             <View>
@@ -151,7 +151,7 @@ class Search extends Component {
                                     width: this.state.width * .94,
                                     fontSize: 18,
                                     color: 'black',
-                                    paddingTop: 4
+                                    paddingTop: 6
                                 }}
                                 placeholder="Search here">
                             </TextInput>
