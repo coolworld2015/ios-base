@@ -68,13 +68,13 @@ class SearchTab extends Component {
     renderScene(route, navigator) {
         switch (route.index) {
             case 0:
-                return <Search routes={this.routes} navigator={navigator}/>
+                return <Search routes={this.routes} navigator={navigator}/>;
                 break;
             case 1:
-                return <SearchResults data={route.data} routes={this.routes} navigator={navigator}/>
+                return <SearchResults data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
             case 2:
-                return <PhoneDetails data={route.data} routes={this.routes} navigator={navigator}/>
+                return <PhoneDetails data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
         }
     }
@@ -104,16 +104,16 @@ class PhonesTab extends Component {
     renderScene(route, navigator) {
         switch (route.index) {
             case 0:
-                return <Phones routes={this.routes} navigator={navigator}/>
+                return <Phones routes={this.routes} navigator={navigator}/>;
                 break;
             case 1:
-                return <PhoneDetails data={route.data} routes={this.routes} navigator={navigator}/>
+                return <PhoneDetails data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
             case 2:
-                return <Search data={route.data} routes={this.routes} navigator={navigator}/>
+                return <Search data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
             case 3:
-                return <SearchResults data={route.data} routes={this.routes} navigator={navigator}/>
+                return <SearchResults data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
         }
     }
@@ -144,13 +144,13 @@ class UsersTab extends Component {
     renderScene(route, navigator) {
         switch (route.index) {
             case 0:
-                return <Users routes={this.routes} navigator={navigator}/>
+                return <Users routes={this.routes} navigator={navigator}/>;
                 break;
             case 1:
-                return <UserDetails data={route.data} routes={this.routes} navigator={navigator}/>
+                return <UserDetails data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
             case 2:
-                return <UserAdd data={route.data} routes={this.routes} navigator={navigator}/>
+                return <UserAdd data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
         }
     }
@@ -181,10 +181,10 @@ class AuditTab extends Component {
     renderScene(route, navigator) {
         switch (route.index) {
             case 0:
-                return <Audit routes={this.routes} navigator={navigator}/>
+                return <Audit routes={this.routes} navigator={navigator}/>;
                 break;
             case 1:
-                return <AuditDetails data={route.data} routes={this.routes} navigator={navigator}/>
+                return <AuditDetails data={route.data} routes={this.routes} navigator={navigator}/>;
                 break;
         }
     }

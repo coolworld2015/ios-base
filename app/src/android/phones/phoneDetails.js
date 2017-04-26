@@ -44,20 +44,6 @@ class PhoneDetails extends Component {
     }
 
     render() {
-        let errorCtrl, validCtrl;
-
-        if (this.state.serverError) {
-            errorCtrl = <Text style={styles.error}>
-                Something went wrong.
-            </Text>;
-        }
-
-        if (this.state.invalidValue) {
-            validCtrl = <Text style={styles.error}>
-                Value required - please provide.
-            </Text>;
-        }
-
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
@@ -168,8 +154,6 @@ class PhoneDetails extends Component {
                                 </Text>
                             </View>
                         </View>
-
-                        {validCtrl}
 
                         <TouchableHighlight
                             onPress={() => this.goBack()}

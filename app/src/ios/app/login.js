@@ -24,17 +24,18 @@ class Login extends Component {
     }
 
     onLogin() {
-        if (this.state.username == undefined ||
-            this.state.password == undefined) {
+        this.setState({
+            showProgress: true
+        });
+
+        if (this.state.username === undefined || this.state.username === '' ||
+            this.state.password === undefined || this.state.password === '') {
             this.setState({
                 badCredentials: true
             });
             return;
         }
 
-        this.setState({
-            showProgress: true
-        });
 
         fetch(window.appConfig.url + 'api/login', {
             method: 'post',
