@@ -40,8 +40,8 @@ class Search extends Component {
     }
 
     onSearchPressed() {
-        if (this.state.searchQuery == undefined ||
-            this.state.searchQuery == '') {
+        if (this.state.searchQuery === undefined ||
+            this.state.searchQuery === '') {
             this.setState({
                 invalidValue: true
             });

@@ -18,11 +18,11 @@ class SearchResults extends Component {
     constructor(props) {
         super(props);
 
-        var ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 != r2
+        let ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2
         });
 
-        var items = [];
+        let items = [];
         this.state = {
             dataSource: ds.cloneWithRows(items),
             searchQueryHttp: props.searchQuery,
@@ -38,7 +38,7 @@ class SearchResults extends Component {
 
     findByPhone() {
         let webUrl;
-        if (this.state.searchType == 'Search by phone') {
+        if (this.state.searchType === 'Search by phone') {
             webUrl = 'api/items/findByPhone/'
         } else {
             webUrl = 'api/items/findByName/'
@@ -75,7 +75,7 @@ class SearchResults extends Component {
     }
 
     sort(a, b) {
-        var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
         if (nameA < nameB) {
             return -1
         }
@@ -123,7 +123,7 @@ class SearchResults extends Component {
     }
 
     refreshData(event) {
-        if (this.state.showProgress == true) {
+        if (this.state.showProgress === true) {
             return;
         }
 
@@ -141,34 +141,32 @@ class SearchResults extends Component {
             }, 300);
         }
 
-        if (this.state.filteredItems == undefined) {
+        if (this.state.filteredItems === undefined) {
             return;
         }
 
-        var items, positionY, recordsCount;
+        let items, positionY, recordsCount;
         recordsCount = this.state.recordsCount;
         positionY = this.state.positionY;
         items = this.state.filteredItems.slice(0, recordsCount);
-
-        //console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
             console.log(items.length);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(items),
-                recordsCount: recordsCount + 20,
-                positionY: positionY + 1000
+                recordsCount: recordsCount + 10,
+                positionY: positionY + 500
             });
         }
     }
 
     onChangeText(text) {
         if (this.state.dataSource == undefined) {
-            //return;
+            return;
         }
 
-        var arr = [].concat(this.state.responseData);
-        var items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) != -1);
+        let arr = [].concat(this.state.responseData);
+        let items = arr.filter((el) => el.phone.toLowerCase().indexOf(text.toLowerCase()) !== -1);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items),
             resultsCount: items.length,
@@ -178,7 +176,7 @@ class SearchResults extends Component {
     }
 
     render() {
-        var errorCtrl, loader;
+        let errorCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -200,15 +198,7 @@ class SearchResults extends Component {
         return (
             <View style={{flex: 1, justifyContent: 'center'}}>
                 <View style={{marginTop: 60}}>
-                    <TextInput style={{
-                        height: 45,
-                        marginTop: 4,
-                        padding: 5,
-                        backgroundColor: 'white',
-                        borderWidth: 3,
-                        borderColor: 'lightgray',
-                        borderRadius: 0
-                    }}
+                    <TextInput style={styles.textInput}
                         onChangeText={this.onChangeText.bind(this)}
                         value={this.state.searchQuery}
                         placeholder="Search here">
@@ -239,6 +229,15 @@ class SearchResults extends Component {
 }
 
 const styles = StyleSheet.create({
+    textInput: {
+        height: 45,
+        marginTop: 0,
+        padding: 5,
+        backgroundColor: 'white',
+        borderWidth: 3,
+        borderColor: 'lightgray',
+        borderRadius: 0
+    },
     countFooter: {
         fontSize: 16,
         textAlign: 'center',
