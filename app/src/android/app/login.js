@@ -61,30 +61,14 @@ class Login extends Component {
         })
             .then((response) => response.json())
             .then((responseData) => {
-                if (responseData.token) {
-                    appConfig.access_token = responseData.token;
-
-                    this.setState({
-                        badCredentials: false
-                    });
-
-                    this.props.onLogin();
-                } else {
-                    this.setState({
-                        badCredentials: true
-                    });
-                }
+                appConfig.access_token = responseData.token;
+                this.props.onLogin();
             })
             .catch((error) => {
                 this.setState({
                     badCredentials: true
                 });
             })
-            .finally(() => {
-                this.setState({
-                    showProgress: false
-                });
-            });
     }
 
     render() {

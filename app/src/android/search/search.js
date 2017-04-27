@@ -86,41 +86,39 @@ class Search extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Back
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Back
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textLarge}>
-                                Search
-                            </Text>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    Search
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.clearSearch()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Clear
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.clearSearch()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Clear
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>
 
-                <ScrollView keyboardShouldPersistTaps={true}>
+                <ScrollView keyboardShouldPersistTaps="always">
                     <View style={styles.scrollBlock}>
                         <View style={styles.switchBlock}>
                             <View>
-                                <Text style={styles.switchItem}>
+                                <Text style={styles.switchItemText}>
                                     {this.state.textSwitchBase}
                                 </Text>
                             </View>
@@ -218,6 +216,10 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     switchItem: {
+        marginTop: 10,
+        margin: 10
+    },
+    switchItemText: {
         fontSize: 18,
         marginTop: 10,
         margin: 10
