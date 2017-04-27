@@ -36,7 +36,7 @@ class Login extends Component {
             showProgress: true
         });
 
-        fetch(window.appConfig.url + 'api/login', {
+        fetch(appConfig.url + 'api/login', {
             method: 'post',
             body: JSON.stringify({
                 name: this.state.username,
@@ -55,9 +55,7 @@ class Login extends Component {
                     this.setState({
                         badCredentials: false
                     });
-
                     this.props.onLogin();
-
                 } else {
                     this.setState({
                         badCredentials: true,
