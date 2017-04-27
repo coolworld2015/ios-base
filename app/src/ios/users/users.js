@@ -275,6 +275,7 @@ class Users extends Component {
                     onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
                     <ListView
                         style={styles.scroll}
+                        enableEmptySections={true}
                         dataSource={this.state.dataSource}
                         renderRow={this.renderRow.bind(this)}
                     />
@@ -283,9 +284,11 @@ class Users extends Component {
                 <View>
                     <TouchableWithoutFeedback
                         onPress={() => this.clearSearchQuery()}>
-                        <Text style={styles.countFooter}>
-                            Records: {this.state.resultsCount}
-                        </Text>
+                        <View>
+                            <Text style={styles.countFooter}>
+                                Records: {this.state.resultsCount}
+                            </Text>
+                        </View>
                     </TouchableWithoutFeedback>
                 </View>
             </View>

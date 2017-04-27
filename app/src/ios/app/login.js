@@ -83,7 +83,7 @@ class Login extends Component {
         }
 
         return (
-            <ScrollView style={{backgroundColor: 'whitesmoke'}} keyboardShouldPersistTaps={true}>
+            <ScrollView style={{backgroundColor: 'whitesmoke'}} keyboardShouldPersistTaps='always'>
                 <View style={styles.container}>
                     <Image style={styles.logo}
                            source={require('../../../img/logo.jpg')}

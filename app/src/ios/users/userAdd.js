@@ -81,7 +81,7 @@ class UserAdd extends Component {
         }
 
         return (
-            <ScrollView keyboardShouldPersistTaps={true}>
+            <ScrollView keyboardShouldPersistTaps='always'>
                 <View style={{
                     flex: 1,
                     padding: 10,
