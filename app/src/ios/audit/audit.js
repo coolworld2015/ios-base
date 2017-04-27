@@ -72,7 +72,7 @@ class Audit extends Component {
             title: rowData.date,
             component: AuditDetails,
             passProps: {
-                pushEvent: rowData
+                data: rowData
             }
         });
     }

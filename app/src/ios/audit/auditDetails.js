@@ -13,14 +13,14 @@ class AuditDetails extends Component {
     constructor(props) {
         super(props);
 
-        let ip = props.pushEvent.ip.split(':');
+        let ip = props.data.ip.split(':');
 
         this.state = {
-            id: props.pushEvent.id,
-            name: props.pushEvent.name,
-            date: props.pushEvent.date,
+            id: props.data.id,
+            name: props.data.name,
+            date: props.data.date,
             ip: ip[3],
-            description: props.pushEvent.description,
+            description: props.data.description,
             showProgress: false
         };
     }

@@ -152,7 +152,7 @@ class Users extends Component {
                 );
             },
             passProps: {
-                pushEvent: rowData
+                data: rowData
             }
         });
     }

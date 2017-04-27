@@ -83,7 +83,7 @@ class Phones extends Component {
             title: rowData.name,
             component: PhoneDetails,
             passProps: {
-                pushEvent: rowData
+                data: rowData
             }
         });
     }

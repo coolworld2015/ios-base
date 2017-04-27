@@ -16,10 +16,10 @@ class UserDetails extends Component {
         super(props);
 
         this.state = {
-            id: props.pushEvent.id,
-            name: props.pushEvent.name,
-            pass: props.pushEvent.pass,
-            description: props.pushEvent.description,
+            id: props.data.id,
+            name: props.data.name,
+            pass: props.data.pass,
+            description: props.data.description,
             showProgress: false
         };
     }

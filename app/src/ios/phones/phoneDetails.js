@@ -14,13 +14,13 @@ class PhoneDetails extends Component {
         super(props);
 
         this.state = {
-            id: props.pushEvent.id,
-            name: props.pushEvent.name,
-            phone: props.pushEvent.phone,
-            street: props.pushEvent.street,
-            house: props.pushEvent.house,
-            apt: props.pushEvent.apt,
-            index: props.pushEvent.index
+            id: props.data.id,
+            name: props.data.name,
+            phone: props.data.phone,
+            street: props.data.street,
+            house: props.data.house,
+            apt: props.data.apt,
+            index: props.data.index
         };
     }
 
