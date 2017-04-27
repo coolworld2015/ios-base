@@ -49,30 +49,29 @@ class AuditDetails extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Back
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Back
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textLarge}>
-                                {this.state.date}
-                            </Text>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    {this.state.date}
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                            </Text>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>

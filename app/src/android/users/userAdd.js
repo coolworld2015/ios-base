@@ -99,35 +99,34 @@ class UserAdd extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Back
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Back
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textLarge}>
-                                New record
-                            </Text>
+                        <TouchableWithoutFeedback underlayColor='#ddd'>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    New record
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                            </Text>
+                        <TouchableWithoutFeedback underlayColor='#ddd'>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>
 
-                <ScrollView keyboardShouldPersistTaps={true}>
+                <ScrollView keyboardShouldPersistTaps="always">
                     <View style={styles.form}>
                         <TextInput
                             underlineColorAndroid='rgba(0,0,0,0)'

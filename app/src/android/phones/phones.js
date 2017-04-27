@@ -191,31 +191,34 @@ class Phones extends Component {
                     <View>
                         <TouchableWithoutFeedback
                             onPress={() => this.refreshDataAndroid()}
-                            underlayColor='#ddd'
                         >
-                            <Text style={styles.textSmall}>
-                                Reload
-                            </Text>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Reload
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
                         <TouchableWithoutFeedback
-                            underlayColor='#ddd'
                             onPress={() => this.clearSearchQuery()}
                         >
-                            <Text style={styles.textLarge}>
-                                Phones
-                            </Text>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    Phones
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
                         <TouchableWithoutFeedback
                             onPress={() => this.goSearch()}
-                            underlayColor='#ddd'
                         >
-                            <Text style={styles.textSmall}>
-                                Search
-                            </Text>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Search
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>

@@ -48,30 +48,29 @@ class PhoneDetails extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Back
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Back
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textLarge}>
-                                {this.state.name}
-                            </Text>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    {this.state.name}
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                            </Text>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>
@@ -158,9 +157,11 @@ class PhoneDetails extends Component {
                         <TouchableHighlight
                             onPress={() => this.goBack()}
                             style={styles.button}>
-                            <Text style={styles.buttonText}>
-                                Back
-                            </Text>
+                            <View>
+                                <Text style={styles.buttonText}>
+                                    Back
+                                </Text>
+                            </View>
                         </TouchableHighlight>
 
                         <Text>{this.state.bugANDROID}</Text>

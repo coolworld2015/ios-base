@@ -171,37 +171,35 @@ class UserDetails extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Back
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Back
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textLarge}>
-                                {this.state.name}
-                            </Text>
+                        <TouchableWithoutFeedback underlayColor='#ddd'>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    {this.state.name}
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.deleteItemDialog()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Delete
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.deleteItemDialog()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Delete
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>
 
-                <ScrollView keyboardShouldPersistTaps={true}>
+                <ScrollView keyboardShouldPersistTaps="always">
                     <View style={styles.form}>
                         <TextInput
                             underlineColorAndroid='rgba(0,0,0,0)'

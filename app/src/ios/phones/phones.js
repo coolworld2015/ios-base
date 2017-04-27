@@ -132,7 +132,6 @@ class Phones extends Component {
         items = this.state.filteredItems.slice(0, recordsCount);
 
         if (event.nativeEvent.contentOffset.y >= positionY - 10) {
-            console.log(items.length);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(items),
                 recordsCount: recordsCount + 10,

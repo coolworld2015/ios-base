@@ -201,30 +201,30 @@ class Users extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.refreshDataAndroid()}
-                        >
-                            <Text style={styles.textSmall}>
-                                Reload
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.refreshDataAndroid()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Reload
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.clearSearchQuery()}
-                        >
-                            <Text style={styles.textLarge}>
-                                Users
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.clearSearchQuery()}>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    Users
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.addItem()}
-                        >
-                            <Text style={styles.textSmall}>
-                                New
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.addItem()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    New
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>

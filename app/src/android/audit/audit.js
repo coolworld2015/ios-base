@@ -172,30 +172,29 @@ class Audit extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.refreshDataAndroid()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                                Reload
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.refreshDataAndroid()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Reload
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.clearSearchQuery()}
-                        >
-                            <Text style={styles.textLarge}>
-                                Audit
-                            </Text>
+                        <TouchableWithoutFeedback onPress={() => this.clearSearchQuery()}>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    Audit
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            underlayColor='#ddd'
-                        >
-                            <Text style={styles.textSmall}>
-                            </Text>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
                 </View>
