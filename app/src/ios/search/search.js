@@ -76,7 +76,7 @@ class Search extends Component {
         }
 
         return (
-            <ScrollView keyboardShouldPersistTaps={true}>
+            <ScrollView keyboardShouldPersistTaps='always'>
                 <View style={styles.container}>
                     <TouchableHighlight
                         onPress={this.clearSearch.bind(this)}
@@ -152,8 +152,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         flex: 1,
         flexDirection: 'row',
-        borderRadius: 5,
-        fontSize: 18
+        borderRadius: 5
     },
     textForm: {
         marginTop: 3,

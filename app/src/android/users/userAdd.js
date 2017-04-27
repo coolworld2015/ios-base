@@ -126,7 +126,7 @@ class UserAdd extends Component {
                     </View>
                 </View>
 
-                <ScrollView keyboardShouldPersistTaps="always">
+                <ScrollView keyboardShouldPersistTaps='always'>
                     <View style={styles.form}>
                         <TextInput
                             underlineColorAndroid='rgba(0,0,0,0)'

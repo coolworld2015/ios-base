@@ -114,7 +114,7 @@ class Search extends Component {
                     </View>
                 </View>
 
-                <ScrollView keyboardShouldPersistTaps="always">
+                <ScrollView keyboardShouldPersistTaps='always'>
                     <View style={styles.scrollBlock}>
                         <View style={styles.switchBlock}>
                             <View>

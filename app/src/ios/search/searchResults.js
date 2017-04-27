@@ -94,7 +94,7 @@ class SearchResults extends Component {
                 this.props.navigator.popToTop()
             },
             passProps: {
-                pushEvent: rowData
+                data: rowData
             }
         });
     }
@@ -213,6 +213,7 @@ class SearchResults extends Component {
                     onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
                     <ListView
                         style={{marginTop: -65, marginBottom: -45}}
+                        enableEmptySections={true}
                         dataSource={this.state.dataSource}
                         renderRow={this.renderRow.bind(this)}
                     />
