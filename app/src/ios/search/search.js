@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ScrollView,
     ActivityIndicator,
     TextInput,
@@ -77,15 +78,36 @@ class Search extends Component {
 
         return (
             <ScrollView keyboardShouldPersistTaps='always'>
-                <View style={styles.container}>
-                    <TouchableHighlight
-                        onPress={this.clearSearch.bind(this)}
-                        style={styles.button}>
-                        <Text style={styles.buttonText}>
-                            Search
-                        </Text>
-                    </TouchableHighlight>
+                <View style={styles.header}>
+                    <View>
+                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    Search
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <TouchableWithoutFeedback onPress={() => this.clearSearch()}>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                    Clear
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                </View>
 
+                <View style={styles.container}>
                     <View style={styles.form}>
                         <View style={styles.textForm}>
                             <Text style={styles.text}>
@@ -138,6 +160,28 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#48BBEC',
+        borderWidth: 0,
+        borderColor: 'whitesmoke'
+    },
+    textSmall: {
+        fontSize: 16,
+        textAlign: 'center',
+        margin: 14,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    textLarge: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        marginLeft: 50,
+        fontWeight: 'bold',
+        color: 'white'
+    },
     container: {
         padding: 10,
         alignItems: 'center',
@@ -178,7 +222,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#48BBEC',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
-        marginTop: 10,
+        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5
