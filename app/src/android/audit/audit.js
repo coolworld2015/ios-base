@@ -36,6 +36,12 @@ class Audit extends Component {
     }
 
     getItems() {
+		this.setState({
+            resultsCount: 0,
+            recordsCount: 25,
+            positionY: 0
+        });
+		
         fetch(appConfig.url + 'api/audit/get', {
             method: 'get',
             headers: {

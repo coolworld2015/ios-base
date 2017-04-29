@@ -51,6 +51,12 @@ class SearchResults extends Component {
     }
 
     findItems() {
+		this.setState({
+            resultsCount: 0,
+            recordsCount: 25,
+            positionY: 0
+        });
+		
         let webUrl;
         if (this.state.searchType === 'Search by phone') {
             webUrl = 'api/items/findByPhone/'

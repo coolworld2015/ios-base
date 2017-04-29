@@ -49,6 +49,12 @@ class Users extends Component {
     }
 
     getItems() {
+		this.setState({
+            resultsCount: 0,
+            recordsCount: 25,
+            positionY: 0
+        });
+		
         fetch(appConfig.url + 'api/users/get', {
             method: 'get',
             headers: {
