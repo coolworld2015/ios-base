@@ -10,7 +10,9 @@ import {
     ListView,
     ScrollView,
     ActivityIndicator,
-    TextInput
+    TextInput,
+	Image,
+	Dimensions
 } from 'react-native';
 
 import PhoneDetails from './phoneDetails';
@@ -27,16 +29,27 @@ class Phones extends Component {
             dataSource: ds.cloneWithRows([]),
             showProgress: true,
             resultsCount: 0,
-            recordsCount: 25,
-            positionY: 0
+            recordsCount: 15,
+            positionY: 0,
+			searchQuery: ''
         };
     }
 
     componentDidMount() {
+		this.setState({
+            width: Dimensions.get('window').width
+        });
         this.getItems();
     }
 
     getItems() {
+		this.setState({
+			serverError: false,
+            resultsCount: 0,
+            recordsCount: 15,
+            positionY: 0
+        });
+		
         fetch(appConfig.url + 'api/items/get', {
             method: 'get',
             headers: {
@@ -49,7 +62,7 @@ class Phones extends Component {
             .then((responseData) => {
 
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 25)),
+                    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 15)),
                     resultsCount: responseData.length,
                     responseData: responseData,
                     filteredItems: responseData
@@ -161,7 +174,7 @@ class Phones extends Component {
             resultsCount: this.state.responseData.length,
             filteredItems: this.state.responseData,
             positionY: 0,
-            recordsCount: 25,
+            recordsCount: 15,
             searchQuery: ''
         });
     }
