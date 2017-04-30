@@ -170,11 +170,11 @@ class Phones extends Component {
 
     clearSearchQuery() {
         this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 15)),
             resultsCount: this.state.responseData.length,
             filteredItems: this.state.responseData,
             positionY: 0,
-            recordsCount: 25,
+            recordsCount: 15,
             searchQuery: ''
         });
     }

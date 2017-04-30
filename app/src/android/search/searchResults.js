@@ -11,7 +11,9 @@ import {
     ScrollView,
     ActivityIndicator,
     TextInput,
-    BackAndroid
+    BackAndroid,
+	Image,
+	Dimensions
 } from 'react-native';
 
 class SearchResults extends Component {
@@ -40,20 +42,24 @@ class SearchResults extends Component {
                 searchType: props.data.searchType,
                 showProgress: true,
                 resultsCount: 0,
-                recordsCount: 25,
-                positionY: 0
+                recordsCount: 15,
+                positionY: 0,
+				searchQuery: ''
             };
         }
     }
 
     componentDidMount() {
-        this.findItems();
+		this.setState({
+            width: Dimensions.get('window').width
+        });
+        this.getItems();
     }
 
-    findItems() {
+    getItems() {
 		this.setState({
             resultsCount: 0,
-            recordsCount: 25,
+            recordsCount: 15,
             positionY: 0
         });
 		
@@ -75,7 +81,7 @@ class SearchResults extends Component {
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 25)),
+                    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 15)),
                     resultsCount: responseData.length,
                     responseData: responseData.sort(this.sort),
                     filteredItems: responseData.sort(this.sort)
@@ -136,7 +142,7 @@ class SearchResults extends Component {
             this.setState({
                 showProgress: true,
                 resultsCount: 0,
-                recordsCount: 25,
+                recordsCount: 15,
                 positionY: 0,
                 searchQuery: ''
             });
@@ -182,9 +188,20 @@ class SearchResults extends Component {
     goBack(rowData) {
         this.props.navigator.pop();
     }
-
+	
+    clearSearchQuery() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 15)),
+            resultsCount: this.state.responseData.length,
+            filteredItems: this.state.responseData,
+            positionY: 0,
+            recordsCount: 15,
+            searchQuery: ''
+        });
+    }
+	
     render() {
-        let errorCtrl, loader;
+        let errorCtrl, loader, image;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -193,15 +210,24 @@ class SearchResults extends Component {
         }
 
         if (this.state.showProgress) {
-            loader = <View style={{
-                justifyContent: 'center',
-                height: 100
-            }}>
+            loader = <View style={styles.loader}>
                 <ActivityIndicator
                     size="large"
-                    animating={true}/>
+                    animating={true}
+                />
             </View>;
         }
+
+		if (this.state.searchQuery.length > 0) {
+			image = <Image
+				source={require('../../../img/cancel.png')}
+				style={{
+					height: 20,
+					width: 20,
+					marginTop: 10
+				}}
+			/>;
+		}
 
         return (
             <View style={styles.container}>
@@ -234,14 +260,41 @@ class SearchResults extends Component {
                     </View>
                 </View>
 
-                <View>
-                    <TextInput
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        onChangeText={this.onChangeText.bind(this)}
-                        style={styles.textInput}
-                        value={this.state.searchQuery}
-                        placeholder="Search here">
-                    </TextInput>
+                <View style={styles.iconForm}>
+					<View>
+						<TextInput
+							underlineColorAndroid='rgba(0,0,0,0)'
+							onChangeText={this.onChangeText.bind(this)}
+							style={{
+								height: 45,
+								padding: 5,
+								backgroundColor: 'white',
+								borderWidth: 3,
+								borderColor: 'white',
+								borderRadius: 0,
+								width: this.state.width * .90,
+							}}
+							value={this.state.searchQuery}
+							placeholder="Search here">
+						</TextInput>
+					</View>
+					<View style={{
+						height: 45,
+						backgroundColor: 'white',
+						borderWidth: 3,
+						borderColor: 'white',
+						marginLeft: -10,
+						paddingLeft: 5,
+						width: this.state.width * .10,
+					}}>			
+						<TouchableWithoutFeedback
+							onPress={() => this.clearSearchQuery()}
+						>			
+							<View>					
+								{image}
+							</View>
+						</TouchableWithoutFeedback>
+					</View>
                 </View>
 
                 {errorCtrl}
@@ -271,7 +324,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         backgroundColor: 'white'
-    },
+    },	
+	iconForm: {
+		flexDirection: 'row',
+		borderColor: 'lightgray',
+		borderWidth: 3
+	},
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',

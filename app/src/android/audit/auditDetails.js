@@ -118,9 +118,11 @@ class AuditDetails extends Component {
                             <Text style={styles.itemTextBold}>
                                 Description:
                             </Text>
-                            <Text style={styles.itemText}>
-                                {this.state.description}
-                            </Text>
+                            <View style={styles.itemWrap}>
+                                <Text style={styles.itemText}>
+                                    {this.state.description}
+                                </Text>
+                            </View>
                         </View>
 
                         <TouchableHighlight
@@ -167,6 +169,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white'
     },
+	itemWrap: {
+        flex: 1,
+        flexDirection: 'column',
+        flexWrap: 'wrap'
+    },
     form: {
         flex: 1,
         padding: 10,
@@ -178,16 +185,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     itemTextBold: {
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'left',
-        margin: 10,
+        margin: 5,
         fontWeight: 'bold',
         color: 'black'
     },
     itemText: {
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'left',
-        margin: 10,
+        margin: 5,
         marginLeft: 2,
         color: 'black'
     },

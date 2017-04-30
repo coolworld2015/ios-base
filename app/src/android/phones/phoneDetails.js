@@ -216,16 +216,16 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     itemTextBold: {
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'left',
-        margin: 10,
+        margin: 5,
         fontWeight: 'bold',
         color: 'black'
     },
     itemText: {
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'left',
-        margin: 10,
+        margin: 5,
         marginLeft: 2,
         color: 'black'
     },
