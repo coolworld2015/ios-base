@@ -12,7 +12,8 @@ import {
     ActivityIndicator,
     TextInput,
 	Image,
-	Dimensions
+	Dimensions,
+	RefreshControl
 } from 'react-native';
 
 class Audit extends Component {
@@ -30,7 +31,8 @@ class Audit extends Component {
             resultsCount: 0,
             recordsCount: 15,
             positionY: 0,
-			searchQuery: ''
+			searchQuery: '',
+			refreshing: false
         };
     }
 
@@ -43,9 +45,11 @@ class Audit extends Component {
 
     getItems() {
 		this.setState({
+			serverError: false,
             resultsCount: 0,
             recordsCount: 15,
-            positionY: 0
+            positionY: 0,
+			searchQuery: ''
         });
 		
         fetch(appConfig.url + 'api/audit/get', {
@@ -195,16 +199,15 @@ class Audit extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.refreshDataAndroid()}>
+                        <TouchableWithoutFeedback>
                             <View>
                                 <Text style={styles.textSmall}>
-                                    Reload
                                 </Text>
                             </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.clearSearchQuery()}>
+                        <TouchableWithoutFeedback>
                             <View>
                                 <Text style={styles.textLarge}>
                                     Audit
@@ -263,13 +266,21 @@ class Audit extends Component {
 
                 {loader}
 
-                <ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
-                    <ListView
-                        enableEmptySections={true}
-                        dataSource={this.state.dataSource}
-                        renderRow={this.renderRow.bind(this)}
-                    />
-                </ScrollView>
+				<ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}
+					refreshControl={
+						<RefreshControl
+							enabled={true}
+							refreshing={this.state.refreshing}
+							onRefresh={this.refreshDataAndroid.bind(this)}
+						/>
+					}
+				>
+					<ListView
+						enableEmptySections={true}
+						dataSource={this.state.dataSource}
+						renderRow={this.renderRow.bind(this)}
+					/>
+				</ScrollView>
 
                 <View>
                     <Text style={styles.countFooter}>
@@ -310,7 +321,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        marginRight: 60,
+        marginRight: 20,
         fontWeight: 'bold',
         color: 'white'
     },

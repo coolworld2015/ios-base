@@ -13,7 +13,8 @@ import {
     TextInput,
     BackAndroid,
 	Image,
-	Dimensions
+	Dimensions,
+	RefreshControl
 } from 'react-native';
 
 class SearchResults extends Component {
@@ -44,7 +45,8 @@ class SearchResults extends Component {
                 resultsCount: 0,
                 recordsCount: 15,
                 positionY: 0,
-				searchQuery: ''
+				searchQuery: '',
+				refreshing: false
             };
         }
     }
@@ -58,9 +60,11 @@ class SearchResults extends Component {
 
     getItems() {
 		this.setState({
+			serverError: false,
             resultsCount: 0,
             recordsCount: 15,
-            positionY: 0
+            positionY: 0,
+			searchQuery: ''
         });
 		
         let webUrl;
@@ -84,7 +88,8 @@ class SearchResults extends Component {
                     dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 15)),
                     resultsCount: responseData.length,
                     responseData: responseData.sort(this.sort),
-                    filteredItems: responseData.sort(this.sort)
+                    filteredItems: responseData.sort(this.sort),
+					refreshing: false
                 });
 
             })
@@ -184,7 +189,16 @@ class SearchResults extends Component {
             searchQuery: text
         })
     }
+	
+    refreshDataAndroid() {
+        this.setState({
+            showProgress: true,
+            resultsCount: 0
+        });
 
+        this.getItems();
+    }
+	
     goBack(rowData) {
         this.props.navigator.pop();
     }
@@ -301,13 +315,21 @@ class SearchResults extends Component {
 
                 {loader}
 
-                <ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
-                    <ListView
-                        enableEmptySections={true}
-                        dataSource={this.state.dataSource}
-                        renderRow={this.renderRow.bind(this)}
-                    />
-                </ScrollView>
+				<ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}
+					refreshControl={
+						<RefreshControl
+							enabled={true}
+							refreshing={this.state.refreshing}
+							onRefresh={this.refreshDataAndroid.bind(this)}
+						/>
+					}
+				>
+					<ListView
+						enableEmptySections={true}
+						dataSource={this.state.dataSource}
+						renderRow={this.renderRow.bind(this)}
+					/>
+				</ScrollView>
 
                 <View>
                     <Text style={styles.countFooter}>

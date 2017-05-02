@@ -115,11 +115,8 @@ class AuditDetails extends Component {
                         </View>
 
                         <View style={styles.itemBlock}>
-                            <Text style={styles.itemTextBold}>
-                                Description:
-                            </Text>
                             <View style={styles.itemWrap}>
-                                <Text style={styles.itemText}>
+                                <Text style={styles.itemTextBold}>
                                     {this.state.description}
                                 </Text>
                             </View>

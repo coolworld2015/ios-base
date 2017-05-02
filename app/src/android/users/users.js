@@ -12,7 +12,8 @@ import {
     ActivityIndicator,
     TextInput,
 	Image,
-	Dimensions
+	Dimensions,
+	RefreshControl
 } from 'react-native';
 
 class Users extends Component {
@@ -30,7 +31,8 @@ class Users extends Component {
             resultsCount: 0,
             recordsCount: 15,
             positionY: 0,
-			searchQuery: ''
+			searchQuery: '',
+			refreshing: false
         };
     }
 
@@ -56,9 +58,11 @@ class Users extends Component {
 
     getItems() {
 		this.setState({
+			serverError: false,
             resultsCount: 0,
             recordsCount: 15,
-            positionY: 0
+            positionY: 0,
+			searchQuery: ''
         });
 		
         fetch(appConfig.url + 'api/users/get', {
@@ -75,7 +79,8 @@ class Users extends Component {
                     dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 15)),
                     resultsCount: responseData.length,
                     responseData: responseData,
-                    filteredItems: responseData
+                    filteredItems: responseData,
+					refreshing: false
                 });
             })
             .catch((error) => {
@@ -224,16 +229,15 @@ class Users extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.refreshDataAndroid()}>
+                        <TouchableWithoutFeedback>
                             <View>
                                 <Text style={styles.textSmall}>
-                                    Reload
                                 </Text>
                             </View>
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.clearSearchQuery()}>
+                        <TouchableWithoutFeedback>
                             <View>
                                 <Text style={styles.textLarge}>
                                     Users
@@ -293,13 +297,21 @@ class Users extends Component {
 
                 {loader}
 
-                <ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
-                    <ListView
-                        enableEmptySections={true}
-                        dataSource={this.state.dataSource}
-                        renderRow={this.renderRow.bind(this)}
-                    />
-                </ScrollView>
+				<ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}
+					refreshControl={
+						<RefreshControl
+							enabled={true}
+							refreshing={this.state.refreshing}
+							onRefresh={this.refreshDataAndroid.bind(this)}
+						/>
+					}
+				>
+					<ListView
+						enableEmptySections={true}
+						dataSource={this.state.dataSource}
+						renderRow={this.renderRow.bind(this)}
+					/>
+				</ScrollView>
 
                 <View>
                     <Text style={styles.countFooter}>
@@ -340,7 +352,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        marginRight: 20,
+        paddingLeft: 20,
         fontWeight: 'bold',
         color: 'white'
     },
