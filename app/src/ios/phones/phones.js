@@ -12,7 +12,7 @@ import {
     ActivityIndicator,
     TextInput,
 	Image,
-	Dimensions
+    Dimensions
 } from 'react-native';
 
 import PhoneDetails from './phoneDetails';
@@ -36,7 +36,7 @@ class Phones extends Component {
     }
 
     componentDidMount() {
-		this.setState({
+        this.setState({
             width: Dimensions.get('window').width
         });
         this.getItems();
@@ -44,10 +44,11 @@ class Phones extends Component {
 
     getItems() {
 		this.setState({
-			serverError: false,
+            serverError: false,
             resultsCount: 0,
             recordsCount: 15,
-            positionY: 0
+            positionY: 0,
+            searchQuery: ''
         });
 		
         fetch(appConfig.url + 'api/items/get', {
@@ -125,7 +126,7 @@ class Phones extends Component {
             this.setState({
                 showProgress: true,
                 resultsCount: 0,
-                recordsCount: 25,
+                recordsCount: 15,
                 positionY: 0,
                 searchQuery: ''
             });
@@ -170,7 +171,7 @@ class Phones extends Component {
 
     clearSearchQuery() {
         this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 25)),
+            dataSource: this.state.dataSource.cloneWithRows(this.state.responseData.slice(0, 15)),
             resultsCount: this.state.responseData.length,
             filteredItems: this.state.responseData,
             positionY: 0,
@@ -180,7 +181,7 @@ class Phones extends Component {
     }
 
     render() {
-        let errorCtrl, loader;
+        let errorCtrl, loader, image;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -192,19 +193,58 @@ class Phones extends Component {
             loader = <View style={styles.loader}>
                 <ActivityIndicator
                     size="large"
-                    animating={true}/>
+                    animating={true}
+                />
             </View>;
+        }
+
+        if (this.state.searchQuery.length > 0) {
+            image = <Image
+                source={require('../../../img/cancel.png')}
+                style={{
+                    height: 20,
+                    width: 20,
+                    marginTop: 10
+                }}
+            />;
         }
 
         return (
             <View style={styles.container}>
-                <View style={styles.search}>
-                    <TextInput
-                        style={styles.textInput}
-                        onChangeText={this.onChangeText.bind(this)}
-                        value={this.state.searchQuery}
-                        placeholder="Search here">
-                    </TextInput>
+                <View style={styles.iconForm}>
+                    <View>
+                        <TextInput
+                            onChangeText={this.onChangeText.bind(this)}
+                            style={{
+                                height: 45,
+                                padding: 5,
+                                backgroundColor: 'white',
+                                borderWidth: 3,
+                                borderColor: 'white',
+                                borderRadius: 0,
+                                width: this.state.width * .90,
+                            }}
+                            value={this.state.searchQuery}
+                            placeholder="Search here">
+                        </TextInput>
+                    </View>
+                    <View style={{
+                        height: 45,
+                        backgroundColor: 'white',
+                        borderWidth: 3,
+                        borderColor: 'white',
+                        marginLeft: -5,
+                        paddingLeft: 5,
+                        width: this.state.width * .10,
+                    }}>
+                        <TouchableWithoutFeedback
+                            onPress={() => this.clearSearchQuery()}
+                        >
+                            <View>
+                                {image}
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
                 </View>
 
                 {errorCtrl}
@@ -240,7 +280,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        marginTop: 64
+    },
+    iconForm: {
+        flexDirection: 'row',
+        borderColor: 'lightgray',
+        borderWidth: 3
     },
     header: {
         flexDirection: 'row',
