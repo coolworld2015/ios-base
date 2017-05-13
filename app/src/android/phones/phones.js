@@ -234,15 +234,16 @@ class Phones extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback
-                            onPress={() => this.goSearch()}
-                        >
+						<TouchableHighlight
+							onPress={()=> this.goSearch()}
+							underlayColor='#48BBEC'
+						>						
                             <View>
                                 <Text style={styles.textSmall}>
                                     Search
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                 </View>
 
@@ -305,7 +306,7 @@ class Phones extends Component {
 
                 <View>
                     <Text style={styles.countFooter}>
-                        Records: {this.state.resultsCount}
+                        Records: {this.state.resultsCount.toString()}
                     </Text>
                 </View>
             </View>

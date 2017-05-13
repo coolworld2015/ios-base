@@ -86,13 +86,16 @@ class Search extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+						<TouchableHighlight
+							onPress={()=> this.goBack()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     Back
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                     <View>
                         <TouchableWithoutFeedback>
@@ -104,13 +107,16 @@ class Search extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.clearSearch()}>
+						<TouchableHighlight
+							onPress={()=> this.clearSearch()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     Clear
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                 </View>
 

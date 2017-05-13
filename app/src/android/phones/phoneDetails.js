@@ -48,13 +48,16 @@ class PhoneDetails extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+						<TouchableHighlight
+							onPress={()=> this.goBack()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     Back
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                     <View>
                         <TouchableWithoutFeedback>

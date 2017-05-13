@@ -171,13 +171,16 @@ class UserDetails extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+						<TouchableHighlight
+							onPress={()=> this.goBack()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     Back
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                     <View>
                         <TouchableWithoutFeedback underlayColor='#ddd'>
@@ -189,13 +192,16 @@ class UserDetails extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.deleteItemDialog()}>
+						<TouchableHighlight
+							onPress={()=> this.deleteItemDialog()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     Delete
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                 </View>
 

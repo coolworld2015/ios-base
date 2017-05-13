@@ -246,13 +246,16 @@ class Users extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.addItem()}>
+						<TouchableHighlight
+							onPress={()=> this.addItem()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     New
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                 </View>
 
@@ -315,7 +318,7 @@ class Users extends Component {
 
                 <View>
                     <Text style={styles.countFooter}>
-                        Records: {this.state.resultsCount}
+                        Records: {this.state.resultsCount.toString()}
                     </Text>
                 </View>
             </View>

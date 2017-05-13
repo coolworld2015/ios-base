@@ -284,7 +284,7 @@ class Audit extends Component {
 
                 <View>
                     <Text style={styles.countFooter}>
-                        Records: {this.state.resultsCount}
+                        Records: {this.state.resultsCount.toString()}
                     </Text>
                 </View>
             </View>
