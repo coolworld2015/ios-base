@@ -37,7 +37,7 @@ class AppContainer extends Component {
                 <PhonesTab tabLabel="Phones"/>
                 <UsersTab tabLabel="Users"/>
                 <AuditTab tabLabel="Audit"/>
-                <Logout onLogOut={this.onLogOut.bind(this)} tabLabel="Logout"/>
+                <Logout tabLabel="Logout"/>
             </ScrollableTabView>
         );
     }
@@ -46,8 +46,8 @@ class AppContainer extends Component {
 class Logout extends Component {
     constructor(props) {
         super(props);
-
-        this.props.onLogOut();
+		
+        appConfig.onLogOut();
     }
 
     render() {

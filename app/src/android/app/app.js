@@ -28,6 +28,7 @@ class App extends Component {
         window.appConfig = {
             access_token: '',
 			url: 'http://jwt-base.herokuapp.com/',
+			onLogOut: this.onLogOut.bind(this),
 			users: {
                 refresh: false
             },
@@ -40,7 +41,7 @@ class App extends Component {
     render() {
         if (this.state.isLoggedIn) {
             return (
-                <AppContainer onLogOut={this.onLogOut.bind(this)}/>
+                <AppContainer />
             )
         } else {
             return (
