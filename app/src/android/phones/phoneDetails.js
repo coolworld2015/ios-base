@@ -50,7 +50,7 @@ class PhoneDetails extends Component {
                     <View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
                             <View>
                                 <Text style={styles.textSmall}>
@@ -184,7 +184,8 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderWidth: 0,
         borderColor: 'whitesmoke'
     },
@@ -234,7 +235,8 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,

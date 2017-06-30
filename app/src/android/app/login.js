@@ -19,8 +19,8 @@ class Login extends Component {
 
         this.state = {
             showProgress: false,
-            //username: '1',
-            //password: '1',
+            username: '1',
+            password: '1',
             bugANDROID: ''
         }
     }
@@ -164,6 +164,7 @@ class Login extends Component {
                     <ActivityIndicator
                         animating={this.state.showProgress}
                         size="large"
+						color="darkblue"
                         style={styles.loader}
                     />
 
@@ -201,13 +202,14 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 30,
         marginTop: 10,
-        color: 'black',
+        color: 'darkblue',
         fontWeight: 'bold',
         textAlign: 'center'
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 20,

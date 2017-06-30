@@ -197,6 +197,7 @@ class Phones extends Component {
             loader = <View style={styles.loader}>
                 <ActivityIndicator
                     size="large"
+					color="darkblue"
                     animating={true}
                 />
             </View>;
@@ -236,7 +237,7 @@ class Phones extends Component {
                     <View>
 						<TouchableHighlight
 							onPress={()=> this.goSearch()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>						
                             <View>
                                 <Text style={styles.textSmall}>
@@ -322,13 +323,14 @@ const styles = StyleSheet.create({
     },
 	iconForm: {
 		flexDirection: 'row',
-		borderColor: 'lightgray',
+		borderColor: 'darkblue',
 		borderWidth: 3
 	},
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderWidth: 0,
         borderColor: 'whitesmoke'
     },
@@ -375,7 +377,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         padding: 10,
         borderColor: '#D7D7D7',
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         color: 'white',
         fontWeight: 'bold'
     },
