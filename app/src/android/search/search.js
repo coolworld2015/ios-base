@@ -154,7 +154,7 @@ class Search extends Component {
                                     height: 50,
                                     width: this.state.width * .94,
                                     fontSize: 18,
-                                    color: 'black',
+                                    color: 'darkblue',
                                     paddingTop: 6
                                 }}
                                 placeholder="Search here">
@@ -230,7 +230,8 @@ const styles = StyleSheet.create({
     switchItemText: {
         fontSize: 18,
         marginTop: 10,
-        margin: 10
+        margin: 10,
+		color: 'darkblue'
     },
     inputBlock: {
         height: 50,

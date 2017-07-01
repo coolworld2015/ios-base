@@ -153,14 +153,24 @@ class UserDetails extends Component {
     }
 
     render() {
-        let errorCtrl, validCtrl;
+        let errorCtrl, validCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
                 Something went wrong.
             </Text>;
         }
-
+		
+        if (this.state.showProgress) {
+            loader = <View style={styles.loader}>
+                <ActivityIndicator
+                    size="large"
+					color="darkblue"
+                    animating={true}
+                />
+            </View>;
+        }
+		
         if (this.state.invalidValue) {
             validCtrl = <Text style={styles.error}>
                 Value required - please provide.
@@ -173,7 +183,7 @@ class UserDetails extends Component {
                     <View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
                             <View>
                                 <Text style={styles.textSmall}>
@@ -194,7 +204,7 @@ class UserDetails extends Component {
                     <View>
 						<TouchableHighlight
 							onPress={()=> this.deleteItemDialog()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
                             <View>
                                 <Text style={styles.textSmall}>
@@ -252,12 +262,8 @@ class UserDetails extends Component {
                         </TouchableHighlight>
 
                         {errorCtrl}
-
-                        <ActivityIndicator
-                            animating={this.state.showProgress}
-                            size="large"
-                            style={styles.loader}
-                        />
+						
+						{loader}
 
                         <Text>{this.state.bugANDROID}</Text>
                     </View>
@@ -276,7 +282,8 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderWidth: 0,
         borderColor: 'whitesmoke'
     },
@@ -335,7 +342,8 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,
